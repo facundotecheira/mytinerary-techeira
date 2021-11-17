@@ -7,7 +7,7 @@
 }
 
 .iconbrand {
-  width: 10rem;
+  width: 6.4rem;
 }
 
 .video {
@@ -49,9 +49,95 @@
 }
 
 .containerHero .buttonHero {
-
-  padding: .1rem;
+  text-decoration: none;
+  color: white;
   background-color: black;
-  
+  padding: 1rem;
+  border-radius: 5px;
+}
 
+.containerHero .buttonHero:hover {
+  background-color: white;
+  color: black;
+}
+
+.containerHero .buttonHero:active {
+  font-size: 0.8rem;
+}
+
+/* footer */
+
+footer {
+  background-color: white;
+  padding: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer .copy {
+  font-weight: bold;
+  font-size: 1.1rem;
+  transform: translateX(5rem);
+}
+
+footer .redesIcon {
+  width: 3rem;
+  margin-right: 1rem;
+}
+
+footer .twitter {
+  width: 2.7rem;
+}
+
+footer .navegation {
+  display: flex;
+  flex-direction: column;
+  transform: translateX(5rem);
+}
+
+footer .navegation a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+footer .navegation a:hover {
+  color: aquamarine;
+}
+
+@media only screen and (min-width: 280px) and (max-width: 768px) {
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content:baseline;
+    
+  }
+
+  footer .navegation {
+    display: flex;
+    flex-direction: row;
+    transform: translateX(0rem);
+    margin: 0 auto;
+    width: 16.4rem;
+    /* border: 1px solid black; */
+  }
+
+  footer .navegation a {
+    text-decoration: none;
+    font-weight: bold;
+    /* color: black; */
+    margin-right: 1rem;
+  }
+
+  footer .copy {
+    
+    /* border: 1px solid black; */
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 1rem auto;
+    width: 16rem;
+    transform: translateX(0rem);
+  }
 }
