@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Passions+Conflict&family=Petemoss&family=Shippori+Antique&display=swap");
+
 .imguser {
   width: 2.5rem;
 }
@@ -39,7 +41,8 @@
 .containerHero h1 {
   color: whitesmoke;
   font-weight: 550;
-  font-size: 15vmin;
+  font-size: 20vmin;
+  font-family: "Petemoss", "cursive";
 }
 
 .containerHero h3 {
@@ -111,8 +114,7 @@ footer .navegation a:hover {
   footer {
     display: flex;
     flex-direction: column;
-    justify-content:baseline;
-    
+    justify-content: baseline;
   }
 
   footer .navegation {
@@ -132,7 +134,6 @@ footer .navegation a:hover {
   }
 
   footer .copy {
-    
     /* border: 1px solid black; */
     font-weight: bold;
     font-size: 1.1rem;
