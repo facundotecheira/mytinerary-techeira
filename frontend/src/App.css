@@ -45,10 +45,24 @@
   font-family: "Petemoss", "cursive";
 }
 
+.containerHero .containerH3{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+
+
 .containerHero h3 {
   text-align: center;
   font-size: 4vmin;
-  color: whitesmoke;
+  color: #000000;
+  background-color: white;
+  padding: .3rem;
+  border-radius: 5px;
+
 }
 
 .containerHero .buttonHero {
@@ -71,7 +85,10 @@
 /* footer */
 
 footer {
-  background-color: white;
+  background-image: url("https://cdn.pixabay.com/photo/2021/01/05/11/19/bled-5890874_960_720.jpg");
+  background-size: cover;
+  background-position: center;
+  background-position-y: -4.9rem;
   padding: 4rem;
   display: flex;
   justify-content: space-between;
@@ -111,10 +128,39 @@ footer .navegation a:hover {
 }
 
 @media only screen and (min-width: 280px) and (max-width: 768px) {
+  .menuH {
+    /* border: 1px solid black !important; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menuHC {
+    margin: 0 auto;
+  }
+
+  .containeruser {
+    margin-right: 0rem;
+    /* border: 1px solid black !important; */
+    width: 3rem;
+    
+  }
+
+  .imguser {
+    width: 2rem;
+  }
+
+
+
   footer {
     display: flex;
     flex-direction: column;
     justify-content: baseline;
+    background-image: url("https://cdn.pixabay.com/photo/2021/01/05/11/19/bled-5890874_960_720.jpg");
+    background-size: auto;
+    background-position: center;
+    background-position-y: -4rem;
   }
 
   footer .navegation {

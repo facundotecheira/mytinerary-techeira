@@ -9,9 +9,9 @@ const Nav = () => {
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse menuH" id="navbarSupportedContent">
             
-            <ul class="navbar-nav me-auto ">
+            <ul class="navbar-nav me-auto menuHC ">
 
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#s">Home</a>
@@ -31,7 +31,7 @@ const Nav = () => {
                   <img class="imguser" src="./assets/person-circle.svg" alt="usericon"></img>
                 </a>
 
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <ul class="dropdown-menu menuUser" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#s">Sign in</a></li>
                   <li><a class="dropdown-item" href="#s">Sign up</a></li>
                 </ul>
