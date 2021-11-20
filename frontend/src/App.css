@@ -82,7 +82,46 @@
   font-size: 0.8rem;
 }
 
+/* Carousel */
+
+.divGalery{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  /* border: 1px solid black; */
+  
+}
+
+.galery{
+  border: 5px solid black;
+  background-color: black;
+  
+}
+
+.h1Galery{
+  text-align: center;
+  border: 1px solid black;
+  padding: 1rem;
+  color: white;
+  background-color: black;
+}
+
+.galery img{
+  width: 15rem;
+  
+}
+
+.titleGalery{
+  text-align: center;
+  color: white;
+  padding: 1rem;
+}
+
 /* footer */
+
+
 
 footer {
   background-image: url("https://cdn.pixabay.com/photo/2021/01/05/11/19/bled-5890874_960_720.jpg");
