@@ -15,13 +15,16 @@ const breakPoints = [
 
 function Card() {
   
+  
+  
+
   return (
     <>
       <h1 className = 'h1Galery'>Popular MYtineraries</h1>
       <div className="divGalery">
-        <Carousel breakPoints={breakPoints} enableTilt= 'true' enableAutoPlay = 'true'  autoPlaySpeed = '10000' >
+        <Carousel breakPoints={breakPoints}  enableAutoPlay = 'true'  autoPlaySpeed = '10000' >
           {Galery.map(item =><Item>
-              
+        
             <div className= "galery">
 
               <img className= "imgGalery" alt = {item.title} src = {`./assets/${item.ruta}`}/>
