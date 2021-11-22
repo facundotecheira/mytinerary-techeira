@@ -88,23 +88,26 @@
 
   text-align: center;
   padding: 1rem;
-  background-color: black;
-  color: aliceblue;
+  background: linear-gradient(129deg, rgba(131,210,242,1) 33%, rgba(230,225,238,1) 65%);
+  color: black;
   height: 7rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Petemoss", "cursive";
+  font-size: 5rem;
 
 }
 
 .divGalery{
   /* border: 1px solid black; */
   height: 30rem;
+  margin-top: 5rem ;
 
 }
 
 .galery{
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
   /* border: 1px solid black; */
 }
 
@@ -112,7 +115,7 @@
   border: 1px solid black;
   margin-right: 1rem;
   margin-left: 1rem;
-  background-color: black;
+  background: linear-gradient(129deg, rgba(131,210,242,1) 33%, rgba(230,225,238,1) 65%);
 }
 
 .imgGalery{
@@ -125,7 +128,9 @@
 .titleGalery{
 
   text-align: center;
-  color: aliceblue;
+  color: black;
+  
+
   
 }
 
@@ -150,8 +155,12 @@
 .slides .slick-prev,
 .slides .slick-next {
   position: absolute;
-  top: 60%;
+  top: 50%;
   z-index:1;
+}
+
+.slick-prev:before, .slick-next:before{
+  font-size: 30px !important;
 }
 
 .slides .slick-prev {
@@ -224,6 +233,9 @@ footer .navegation a:hover {
 }
 
 @media only screen and (min-width: 280px) and (max-width: 768px) {
+
+  /* Navbar */
+
   .menuH {
     /* border: 1px solid black !important; */
     display: flex;
@@ -250,11 +262,20 @@ footer .navegation a:hover {
 
   /* carrucel */
 
+  .h1Galery{
+
+    
+    font-size: 3rem;
+  
+  }
+
   .imgGalery{
-    width: 17rem;
+    width: 14rem;
     margin: 2rem auto;
     /* margin-right: 2rem; */
   }
+
+
 
   /* footer */
 

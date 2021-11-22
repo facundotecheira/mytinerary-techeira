@@ -19,7 +19,7 @@ export default class Home extends React.Component {
       slidesToShow: 4,
       slidesToScroll: 4,
       autoplay: true,
-      speed: 500,
+      speed: 0,
       autoplaySpeed: 4000,
       cssEase: "linear",
       className: "slides",

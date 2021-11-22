@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 const Hero = () => {
 
     return (
@@ -9,7 +10,7 @@ const Hero = () => {
                 <h3>designed by insiders who know and love their cities!</h3>
             </div>
             <div>
-            <a className = "buttonHero" href="#s">GET STARTED</a>
+                <Link to= "/cities" className = "buttonHero">GET STARTED</Link>
             </div>
         </div>
     )

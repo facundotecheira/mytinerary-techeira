@@ -1,23 +1,33 @@
+import { Link } from 'react-router-dom';
+
 const Nav = () => {
   return (
 
     <div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#s">
-          <img class="iconbrand" src="./assets/logo3.png" alt="iconbrand"></img></a>
+          <Link to='/' class="navbar-brand">
+            <img class="iconbrand" src="./assets/logo3.png" alt="iconbrand"></img>
+          </Link>
+
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse menuH" id="navbarSupportedContent">
-            
+
             <ul class="navbar-nav me-auto menuHC ">
 
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#s">Home</a>
+                
+                <Link to="/" class="nav-link active" aria-current="page">
+                  Home
+                </Link>
+
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#s">Cities</a>
+                <Link to="/cities" class="nav-link active">
+                  Cities
+                </Link>
               </li>
 
 
@@ -32,8 +42,17 @@ const Nav = () => {
                 </a>
 
                 <ul class="dropdown-menu menuUser" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#s">Sign in</a></li>
-                  <li><a class="dropdown-item" href="#s">Sign up</a></li>
+                  <li>
+                    <Link to="/signin" class="dropdown-item">
+                      Sign in
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link to="/signup" class="dropdown-item">
+                      Sign up
+                    </Link>
+                  </li>
                 </ul>
               </li>
 
@@ -42,11 +61,11 @@ const Nav = () => {
         </div>
       </nav>
 
-      
+
 
     </div>
 
-    
+
 
 
   )

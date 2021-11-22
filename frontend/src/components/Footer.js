@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom"
 const Footer = () => {
 
     return (
         <footer>
             
             <div className="navegation">
-                <a href="#a">Home</a>
-                <a href="#a">Cities</a>
+                <Link to="/">Home</Link>
+                <Link to="/cities">Cities</Link>
                 <a href="#a">Sign in</a>
                 <a href="#a">Sign up</a>
             </div>
