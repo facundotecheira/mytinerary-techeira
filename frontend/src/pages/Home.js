@@ -1,7 +1,6 @@
 import React from "react";
 import Nav from "../components/Nav";
 import Hero from '../components/Hero';
-// import Card from "../components/Card";
 import Galery from "../components/Array";
 import Footer from "../components/Footer";
 import "slick-carousel/slick/slick.css";
@@ -70,7 +69,7 @@ export default class Home extends React.Component {
             {Galery.map((gal) => {
               return (
                 <div className="galery">
-                  <div className="ayudaporfavor">
+                  <div className="galGalery">
                     <img className="imgGalery" alt={gal.title} src={`./assets/${gal.ruta}`} />
                     <div className="titleGalery">
 
