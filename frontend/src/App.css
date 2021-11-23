@@ -42,6 +42,14 @@
   align-items: center;
 }
 
+.video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
 .containerHero h1 {
   color: whitesmoke;
   font-weight: 550;
@@ -101,14 +109,18 @@
   justify-content: center;
   align-items: center;
   font-family: "Petemoss", "cursive";
-  font-size: 5rem;
+  /* font-size: 5rem; */
+  font-size: 20vmin;
 
 }
 
 .divGalery{
  
-  height: 30rem;
+  height: 40rem;
   margin-top: 5rem ;
+  /* border: 1px solid black; */
+  /* width: 60rem; */
+  margin: 0 auto;
 
 }
 
@@ -118,15 +130,18 @@
 
   border: 1px solid black;
   border-radius: 5px;
-  margin-right: 1rem;
-  margin-left: 1rem;
+  width: 20rem;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  /* margin-right: 1rem; */
+  /* margin-left: 1rem; */
   /* background: linear-gradient(129deg, rgba(131,210,242,1) 33%, rgba(230,225,238,1) 65%); */
   background-color: black;
 }
 
 .imgGalery{
 
-  width: 19rem;
+  width: 20rem;
   margin: 0 auto;
 
 }
@@ -136,7 +151,7 @@
 
   text-align: center;
   color: white;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 1rem;
   
 }
@@ -150,6 +165,8 @@
 
 .slick-prev:before, .slick-next:before{
   font-size: 30px !important;
+  /* background-color: black; */
+  color: black !important;
 }
 
 .slides .slick-prev {
@@ -214,33 +231,54 @@ footer .navegation a:hover {
   color: aquamarine;
 }
 
-@media only screen and (max-width: 1280px){
 
-  /* carousel */
-  .imgGalery{
-    width: 18rem;
-    margin: 2rem auto;
+
+
+@media only screen and (max-width: 1024px) {
+
+   /* footer */
+
+   footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    background-image: url("https://cdn.pixabay.com/photo/2017/02/26/09/43/beatenberg-2099823_960_720.jpg");
+    background-size: cover;
+    background-position: center;
+    background-position-y: -4rem;
+  }
+
+  footer .navegation {
+    display: flex;
+    flex-direction: row;
+    transform: translateX(0rem);
+    margin: 0 auto;
+    width: 16.4rem;
     
+  }
+
+  footer .navegation a {
+    
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 1rem;
+
+  }
+
+  footer .copy {
+    
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 1rem auto;
+    width: 16rem;
+    transform: translateX(0rem);
+
   }
 
 }
 
-@media only screen and (max-width: 1024px){
 
-  /* carousel */
-  .imgGalery{
-    width: 14rem;
-    margin: 2rem auto;
-    
-  }
-
-}
-
-
-
-
-
-@media only screen and (min-width: 280px) and (max-width: 768px) {
+@media only screen and (min-width: 601px) and (max-width: 1023px) {
 
   /* Navbar */
 
@@ -270,16 +308,24 @@ footer .navegation a:hover {
 
   /* carousel */
 
-  .h1Galery{
-
-    
-    font-size: 3rem;
+  .divGalery{
+ 
+    height: 50rem;
+   
   
   }
 
+  .h1Galery{
+
+    
+    font-size: 15vmin;
+  
+  }
+
+
   .imgGalery{
-    width: 14rem;
-    margin: 2rem auto;
+    width: 20rem;
+    margin: 0 auto;
     
   }
 
@@ -323,4 +369,96 @@ footer .navegation a:hover {
     transform: translateX(0rem);
 
   }
+}
+
+@media only screen and  (max-width: 600px) {
+
+   /* Navbar */
+
+   .menuH {
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+
+  .menuHC {
+    margin: 0 auto;
+  }
+
+  .containeruser {
+    margin-right: 0rem;
+    width: 3rem;
+    
+  }
+
+  .imguser {
+    width: 2rem;
+  }
+
+
+  /* carrucel */
+
+  .h1Galery{
+
+    
+    font-size: 15vmin;
+  
+  }
+
+
+  .divGalery{
+ 
+    height: 90rem;
+   
+  }
+
+  .imgGalery{
+    width: 20rem;
+    margin: 0 auto;
+    
+  }
+
+  /* footer */
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    background-image: url("https://cdn.pixabay.com/photo/2017/02/26/09/43/beatenberg-2099823_960_720.jpg");
+    background-size: auto;
+    background-position: center;
+    background-position-y: -4rem;
+  }
+
+  footer .navegation {
+    display: flex;
+    flex-direction: row;
+    transform: translateX(0rem);
+    margin: 0 auto;
+    width: 16.4rem;
+    
+  }
+
+  footer .navegation a {
+    
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 1rem;
+
+  }
+
+  footer .copy {
+    
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 1rem auto;
+    width: 16rem;
+    transform: translateX(0rem);
+
+  }
+
+
 }

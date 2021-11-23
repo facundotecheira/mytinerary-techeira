@@ -4,28 +4,28 @@ const Nav = () => {
   return (
 
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <Link to='/' class="navbar-brand">
-            <img class="iconbrand" src="./assets/logo3.png" alt="iconbrand"></img>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <Link to='/' className="navbar-brand">
+            <img className="iconbrand" src="./assets/logo3.png" alt="iconbrand"></img>
           </Link>
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse menuH" id="navbarSupportedContent">
+          <div className="collapse navbar-collapse menuH" id="navbarSupportedContent">
 
-            <ul class="navbar-nav me-auto menuHC ">
+            <ul className="navbar-nav me-auto menuHC ">
 
-              <li class="nav-item">
+              <li className="nav-item">
                 
-                <Link to="/" class="nav-link active" aria-current="page">
+                <Link to="/" className="nav-link active" aria-current="page">
                   Home
                 </Link>
 
               </li>
-              <li class="nav-item">
-                <Link to="/cities" class="nav-link active">
+              <li className="nav-item">
+                <Link to="/cities" className="nav-link active">
                   Cities
                 </Link>
               </li>
@@ -33,23 +33,23 @@ const Nav = () => {
 
             </ul>
 
-            <ul class="navbar-nav containeruser mb-2 mb-lg-0">
+            <ul className="navbar-nav containeruser mb-2 mb-lg-0">
 
-              <li class="nav-item dropdown ">
+              <li className="nav-item dropdown ">
 
-                <a class="nav-link dropdown-toggle" href="#s" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img class="imguser" src="./assets/person-circle.svg" alt="usericon"></img>
+                <a className="nav-link dropdown-toggle" href="#s" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img className="imguser" src="./assets/person-circle.svg" alt="usericon"></img>
                 </a>
 
-                <ul class="dropdown-menu menuUser" aria-labelledby="navbarDropdown">
+                <ul className="dropdown-menu menuUser" aria-labelledby="navbarDropdown">
                   <li>
-                    <Link to="#" class="dropdown-item">
+                    <Link to="#" className="dropdown-item">
                       Sign in
                     </Link>
                   </li>
 
                   <li>
-                    <Link to="#" class="dropdown-item">
+                    <Link to="#" className="dropdown-item">
                       Sign up
                     </Link>
                   </li>
