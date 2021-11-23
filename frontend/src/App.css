@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Passions+Conflict&family=Petemoss&family=Shippori+Antique&display=swap");
 
+/* Navbar */
+
 .imguser {
   width: 2.5rem;
 }
@@ -28,6 +30,8 @@
 .nav-link:hover {
   color: #3ec4d6 !important;
 }
+
+/* Hero */
 
 .containerHero {
   width: 100%;
@@ -71,26 +75,28 @@
   background-color: black;
   padding: 1rem;
   border-radius: 5px;
+  font-size: 1.2rem;
 }
 
 .containerHero .buttonHero:hover {
   background-color: white;
   color: black;
+  cursor: pointer;
 }
 
 .containerHero .buttonHero:active {
   font-size: 0.8rem;
 }
 
+
+
 /* Carousel */
 
 .h1Galery{
 
   text-align: center;
-  padding: 1rem;
-  background: linear-gradient(129deg, rgba(131,210,242,1) 33%, rgba(230,225,238,1) 65%);
+  padding: 3rem;
   color: black;
-  height: 7rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,57 +106,40 @@
 }
 
 .divGalery{
-  /* border: 1px solid black; */
+ 
   height: 30rem;
   margin-top: 5rem ;
 
 }
 
-.galery{
-  /* margin-top: 5rem; */
-  /* border: 1px solid black; */
-}
+
 
 .galGalery{
+
   border: 1px solid black;
+  border-radius: 5px;
   margin-right: 1rem;
   margin-left: 1rem;
-  background: linear-gradient(129deg, rgba(131,210,242,1) 33%, rgba(230,225,238,1) 65%);
+  /* background: linear-gradient(129deg, rgba(131,210,242,1) 33%, rgba(230,225,238,1) 65%); */
+  background-color: black;
 }
 
 .imgGalery{
-  width: 18rem;
-  margin: 2rem auto;
-  /* margin-right: 2rem; */
+
+  width: 19rem;
+  margin: 0 auto;
+
 }
 
 
 .titleGalery{
 
   text-align: center;
-  color: black;
-  
-
+  color: white;
+  border: 1px solid black;
+  padding: 1rem;
   
 }
-
-.slides {
-  
-  /* left: 2rem; */
-  /* border: 1px solid black; */
-  /* margin-right: 5rem; */
-}
-
-.slick-slide {
-  
-  /* margin-right: 1rem; */
-}
-/* the parent */
-.slick-list {
-  /* margin-right: 21rem; */
-}
-
-
 
 .slides .slick-prev,
 .slides .slick-next {
@@ -173,27 +162,30 @@
 
 
 
-
-
 /* footer */
 
 
 
 footer {
-  background-image: url("https://cdn.pixabay.com/photo/2021/01/05/11/19/bled-5890874_960_720.jpg");
+  
+  /* background-image: url("https://cdn.pixabay.com/photo/2021/01/05/11/19/bled-5890874_960_720.jpg"); */
+  background-image: url("https://cdn.pixabay.com/photo/2017/02/26/09/43/beatenberg-2099823_960_720.jpg");
   background-size: cover;
   background-position: center;
-  background-position-y: -4.9rem;
+  background-position-y: -13rem;
   padding: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 footer .copy {
+
   font-weight: bold;
   font-size: 1.1rem;
   transform: translateX(5rem);
+
 }
 
 footer .redesIcon {
@@ -224,10 +216,11 @@ footer .navegation a:hover {
 
 @media only screen and (max-width: 1024px){
 
+  /* carousel */
   .imgGalery{
     width: 14rem;
     margin: 2rem auto;
-    /* margin-right: 2rem; */
+    
   }
 
 }
@@ -237,11 +230,12 @@ footer .navegation a:hover {
   /* Navbar */
 
   .menuH {
-    /* border: 1px solid black !important; */
+   
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
   }
 
   .menuHC {
@@ -250,7 +244,6 @@ footer .navegation a:hover {
 
   .containeruser {
     margin-right: 0rem;
-    /* border: 1px solid black !important; */
     width: 3rem;
     
   }
@@ -260,7 +253,7 @@ footer .navegation a:hover {
   }
 
 
-  /* carrucel */
+  /* carousel */
 
   .h1Galery{
 
@@ -272,7 +265,7 @@ footer .navegation a:hover {
   .imgGalery{
     width: 14rem;
     margin: 2rem auto;
-    /* margin-right: 2rem; */
+    
   }
 
 
@@ -283,7 +276,7 @@ footer .navegation a:hover {
     display: flex;
     flex-direction: column;
     justify-content: baseline;
-    background-image: url("https://cdn.pixabay.com/photo/2021/01/05/11/19/bled-5890874_960_720.jpg");
+    background-image: url("https://cdn.pixabay.com/photo/2017/02/26/09/43/beatenberg-2099823_960_720.jpg");
     background-size: auto;
     background-position: center;
     background-position-y: -4rem;
@@ -295,22 +288,24 @@ footer .navegation a:hover {
     transform: translateX(0rem);
     margin: 0 auto;
     width: 16.4rem;
-    /* border: 1px solid black; */
+    
   }
 
   footer .navegation a {
+    
     text-decoration: none;
     font-weight: bold;
-    /* color: black; */
     margin-right: 1rem;
+
   }
 
   footer .copy {
-    /* border: 1px solid black; */
+    
     font-weight: bold;
     font-size: 1.1rem;
     margin: 1rem auto;
     width: 16rem;
     transform: translateX(0rem);
+
   }
 }
