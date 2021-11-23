@@ -214,6 +214,17 @@ footer .navegation a:hover {
   color: aquamarine;
 }
 
+@media only screen and (max-width: 1280px){
+
+  /* carousel */
+  .imgGalery{
+    width: 18rem;
+    margin: 2rem auto;
+    
+  }
+
+}
+
 @media only screen and (max-width: 1024px){
 
   /* carousel */
@@ -224,6 +235,10 @@ footer .navegation a:hover {
   }
 
 }
+
+
+
+
 
 @media only screen and (min-width: 280px) and (max-width: 768px) {
 

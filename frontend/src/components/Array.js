@@ -1,7 +1,7 @@
 let Galery = [
 
-    { ruta: 'japang.png', title: 'Tokyo' },
-    { ruta: 'canada.png', title: 'Vancouver' },
+    { ruta: 'japang.jpg', title: 'Tokyo' },
+    { ruta: 'canada.jpg', title: 'Vancouver' },
     { ruta: 'norway.jpg', title: 'Oslo' },
     { ruta: 'Stockholm.jpg', title: 'Stockholm' },
     { ruta: 'copenhagen.jpg', title: 'Copenhagen' },
