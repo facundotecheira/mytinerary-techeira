@@ -13,8 +13,6 @@ let Galery = [
     { ruta: 'newyork.jpg', title: 'New York' },
     { ruta: 'venecia.jpg', title: 'Venice' }
 
-
-
 ]
 
 export default Galery
