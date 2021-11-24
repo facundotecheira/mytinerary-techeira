@@ -8,10 +8,10 @@ let Galery = [
     { ruta: 'helsinki.jpg', title: 'Helsinki' },
     { ruta: 'hamburg.jpg', title: 'Hamburg' },
     { ruta: 'zurich.jpg', title: 'Zurich' },
-    { ruta: 'seul.jpg', title: 'Seúl' },
+    { ruta: 'seul.jpg', title: 'Seoul' },
     { ruta: 'paris.jpg', title: 'Paris' },
-    { ruta: 'newyork.jpg', title: 'NewYork' },
-    { ruta: 'venecia.jpg', title: 'Venecia' }
+    { ruta: 'newyork.jpg', title: 'New York' },
+    { ruta: 'venecia.jpg', title: 'Venice' }
 
 
 
