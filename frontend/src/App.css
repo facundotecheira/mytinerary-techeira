@@ -177,7 +177,31 @@
   right: 5%;
 }
 
+/* cities */
 
+.citiesGalery{
+
+  height: 125rem;
+  margin-top: 5rem ;
+  /* border: 1px solid black; */
+  /* width: 60rem; */
+  margin: 0 auto;
+
+}
+
+.citiesH2Input{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: 1px solid black; */
+  align-items: center;
+  height: 6rem;
+}
+
+
+.citiInput{
+  
+}
 
 /* footer */
 

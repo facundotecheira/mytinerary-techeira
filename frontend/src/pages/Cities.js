@@ -1,14 +1,15 @@
 import React from "react";
 import Nav from "../components/Nav";
-
+import CitiesImg from "../components/CitiesImg";
+import Footer from "../components/Footer";
 export default class Cities extends React.Component{
 
     render(){
         return(
             <>
             <Nav/>
-            <h1>Hola esto es una pagina en blanco</h1>
-            
+            <CitiesImg/>
+            <Footer/>
             </>
         )
     }
