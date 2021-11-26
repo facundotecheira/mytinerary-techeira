@@ -130,7 +130,7 @@
 
   border: 1px solid black;
   border-radius: 5px;
-  width: 20rem;
+  width: 20.1rem;
   margin: 0 auto;
   margin-bottom: 1rem;
   /* margin-right: 1rem; */
@@ -181,7 +181,7 @@
 
 .citiesGalery{
 
-  height: 125rem;
+  height: 420vh;
   margin-top: 5rem ;
   /* border: 1px solid black; */
   /* width: 60rem; */

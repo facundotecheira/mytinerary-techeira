@@ -8,7 +8,7 @@ const CitiesImg = () => {
   const [galery, setGalery] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:4000/galery')
+    fetch('http://localhost:4000/api/galery')
       .then(res => res.json())
       .then(data => setGalery(data.response.galery))
       .catch(err => console.err(err.message))
@@ -18,7 +18,7 @@ const CitiesImg = () => {
   const settings = {
     arrows: false,
     infinite: false,
-    rows: 6,
+    rows: 8,
     slidesPerRow: 2,
     autoplay: false,
     // speed: 0,
@@ -110,7 +110,7 @@ const CitiesImg = () => {
                   <div className="titleGalery">
 
                     <h2 key={gal.title}>
-                      {gal.title}
+                      {gal.title}, {gal.country}
                     </h2>
 
                   </div>
