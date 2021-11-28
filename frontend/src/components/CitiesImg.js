@@ -1,19 +1,22 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
+import {Link} from 'react-router-dom'
 
-const CitiesImg = () => {
+const CitiesImg = (props) => {
+  
+  const galery = props.galery
+  
+  // const [galery, setGalery] = useState([]);
 
-  const [galery, setGalery] = useState([]);
+  // useEffect(() => {
+  //   fetch('http://localhost:4000/api/galery')
+  //     .then(res => res.json())
+  //     .then(data => setGalery(data.response))
+  //     .catch(err => console.log(err.message))
 
-  useEffect(() => {
-    fetch('http://localhost:4000/api/galery')
-      .then(res => res.json())
-      .then(data => setGalery(data.response.galery))
-      .catch(err => console.err(err.message))
-
-  }, [])
+  // }, [])
 
   const settings = {
     arrows: false,
@@ -103,16 +106,19 @@ const CitiesImg = () => {
       <div className="citiesGalery">
         <Slider {...settings}>
           {galery.map((gal) => {
+           
             return (
               <div key={gal.title} className="galery">
                 <div key={gal.title} className="galGalery">
-                  <img key={gal.title} className="imgGalery" alt={gal.title} src={`./assets/${gal.ruta}`} />
+                  <img key={gal.title} className="imgGalery" alt={gal.title} src={`./assets/${gal.path}`} />
                   <div className="titleGalery">
 
                     <h2 key={gal.title}>
                       {gal.title}, {gal.country}
                     </h2>
-
+                    <Link to = {`/cities/${gal.title}/${gal.path}/${gal.country}/${gal.currency}/${gal.language}`}>
+                      Ver elemento
+                    </Link>
                   </div>
                 </div>
 

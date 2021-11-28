@@ -57,24 +57,19 @@
   font-family: "Petemoss", "cursive";
 }
 
-.containerHero .containerH3{
-
+.containerHero .containerH3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
-
-
 
 .containerHero h3 {
   text-align: center;
   font-size: 4vmin;
   color: #000000;
   background-color: white;
-  padding: .3rem;
+  padding: 0.3rem;
   border-radius: 5px;
-
 }
 
 .containerHero .buttonHero {
@@ -96,12 +91,9 @@
   font-size: 0.8rem;
 }
 
-
-
 /* Carousel */
 
-.h1Galery{
-
+.h1Galery {
   text-align: center;
   padding: 3rem;
   color: black;
@@ -111,23 +103,17 @@
   font-family: "Petemoss", "cursive";
   /* font-size: 5rem; */
   font-size: 20vmin;
-
 }
 
-.divGalery{
- 
+.divGalery {
   height: 40rem;
-  margin-top: 5rem ;
+  margin-top: 5rem;
   /* border: 1px solid black; */
   /* width: 60rem; */
   margin: 0 auto;
-
 }
 
-
-
-.galGalery{
-
+.galGalery {
   border: 1px solid black;
   border-radius: 5px;
   width: 20.1rem;
@@ -139,31 +125,27 @@
   background-color: black;
 }
 
-.imgGalery{
-
+.imgGalery {
   width: 20rem;
   margin: 0 auto;
-
 }
 
-
-.titleGalery{
-
+.titleGalery {
   text-align: center;
   color: white;
   /* border: 1px solid black; */
   padding: 1rem;
-  
 }
 
 .slides .slick-prev,
 .slides .slick-next {
   position: absolute;
   top: 50%;
-  z-index:1;
+  z-index: 1;
 }
 
-.slick-prev:before, .slick-next:before{
+.slick-prev:before,
+.slick-next:before {
   font-size: 30px !important;
   /* background-color: black; */
   color: black !important;
@@ -179,17 +161,15 @@
 
 /* cities */
 
-.citiesGalery{
-
-  height: 420vh;
-  margin-top: 5rem ;
+.citiesGalery {
+  height: 450vh;
+  margin-top: 5rem;
   /* border: 1px solid black; */
   /* width: 60rem; */
   margin: 0 auto;
-
 }
 
-.citiesH2Input{
+.citiesH2Input {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -198,17 +178,61 @@
   height: 6rem;
 }
 
+.citiInput {
+}
 
-.citiInput{
-  
+/* City */
+
+.containerCity {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.containerCityInfo {
+  border: 1px solid black;
+  /* background-color: black; */
+}
+
+.containerCityInfo > h2 {
+  /* font-family: "Petemoss", "cursive"; */
+  text-align: center;
+  /* font-size: vmin; */
+
+}
+
+.containerImgCity {
+  border: 1px solid black;
+}
+
+.titleCity {
+  font-family: "Petemoss", "cursive";
+  font-size: 15vmin;
+  text-align: center;
+}
+
+.imgCity {
+  width: 30rem;
+}
+.divButtonCity{
+  margin-bottom: 2rem;
+}
+.buttonCity{
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.buttonCity:hover{
+  padding: .9rem;
 }
 
 /* footer */
 
-
-
 footer {
-  
   /* background-image: url("https://cdn.pixabay.com/photo/2021/01/05/11/19/bled-5890874_960_720.jpg"); */
   background-image: url("https://cdn.pixabay.com/photo/2017/02/26/09/43/beatenberg-2099823_960_720.jpg");
   background-size: cover;
@@ -218,15 +242,12 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 footer .copy {
-
   font-weight: bold;
   font-size: 1.1rem;
   transform: translateX(5rem);
-
 }
 
 footer .redesIcon {
@@ -255,14 +276,10 @@ footer .navegation a:hover {
   color: aquamarine;
 }
 
-
-
-
 @media only screen and (max-width: 1024px) {
+  /* footer */
 
-   /* footer */
-
-   footer {
+  footer {
     display: flex;
     flex-direction: column;
     justify-content: baseline;
@@ -278,41 +295,31 @@ footer .navegation a:hover {
     transform: translateX(0rem);
     margin: 0 auto;
     width: 16.4rem;
-    
   }
 
   footer .navegation a {
-    
     text-decoration: none;
     font-weight: bold;
     margin-right: 1rem;
-
   }
 
   footer .copy {
-    
     font-weight: bold;
     font-size: 1.1rem;
     margin: 1rem auto;
     width: 16rem;
     transform: translateX(0rem);
-
   }
-
 }
 
-
 @media only screen and (min-width: 601px) and (max-width: 1023px) {
-
   /* Navbar */
 
   .menuH {
-   
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-
   }
 
   .menuHC {
@@ -322,38 +329,26 @@ footer .navegation a:hover {
   .containeruser {
     margin-right: 0rem;
     width: 3rem;
-    
   }
 
   .imguser {
     width: 2rem;
   }
-
 
   /* carousel */
 
-  .divGalery{
- 
+  .divGalery {
     height: 50rem;
-   
-  
   }
 
-  .h1Galery{
-
-    
+  .h1Galery {
     font-size: 15vmin;
-  
   }
 
-
-  .imgGalery{
+  .imgGalery {
     width: 20rem;
     margin: 0 auto;
-    
   }
-
-
 
   /* footer */
 
@@ -373,39 +368,31 @@ footer .navegation a:hover {
     transform: translateX(0rem);
     margin: 0 auto;
     width: 16.4rem;
-    
   }
 
   footer .navegation a {
-    
     text-decoration: none;
     font-weight: bold;
     margin-right: 1rem;
-
   }
 
   footer .copy {
-    
     font-weight: bold;
     font-size: 1.1rem;
     margin: 1rem auto;
     width: 16rem;
     transform: translateX(0rem);
-
   }
 }
 
-@media only screen and  (max-width: 600px) {
+@media only screen and (max-width: 600px) {
+  /* Navbar */
 
-   /* Navbar */
-
-   .menuH {
-   
+  .menuH {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-
   }
 
   .menuHC {
@@ -415,34 +402,25 @@ footer .navegation a:hover {
   .containeruser {
     margin-right: 0rem;
     width: 3rem;
-    
   }
 
   .imguser {
     width: 2rem;
   }
 
-
   /* carrucel */
 
-  .h1Galery{
-
-    
+  .h1Galery {
     font-size: 15vmin;
-  
   }
 
-
-  .divGalery{
- 
+  .divGalery {
     height: 90rem;
-   
   }
 
-  .imgGalery{
+  .imgGalery {
     width: 20rem;
     margin: 0 auto;
-    
   }
 
   /* footer */
@@ -463,26 +441,19 @@ footer .navegation a:hover {
     transform: translateX(0rem);
     margin: 0 auto;
     width: 16.4rem;
-    
   }
 
   footer .navegation a {
-    
     text-decoration: none;
     font-weight: bold;
     margin-right: 1rem;
-
   }
 
   footer .copy {
-    
     font-weight: bold;
     font-size: 1.1rem;
     margin: 1rem auto;
     width: 16rem;
     transform: translateX(0rem);
-
   }
-
-
 }

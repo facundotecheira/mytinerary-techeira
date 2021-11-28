@@ -7,7 +7,7 @@ const Nav = () => {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <Link to='/' className="navbar-brand">
-            <img className="iconbrand" src="./assets/logo3.png" alt="iconbrand"></img>
+            <img className="iconbrand" src="/assets/logo3.png" alt="iconbrand"></img>
           </Link>
 
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@ const Nav = () => {
               <li className="nav-item dropdown ">
 
                 <a className="nav-link dropdown-toggle" href="#s" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img className="imguser" src="./assets/person-circle.svg" alt="usericon"></img>
+                  <img className="imguser" src="/assets/person-circle.svg" alt="usericon"></img>
                 </a>
 
                 <ul className="dropdown-menu menuUser" aria-labelledby="navbarDropdown">

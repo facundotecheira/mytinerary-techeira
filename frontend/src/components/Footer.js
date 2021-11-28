@@ -17,9 +17,9 @@ const Footer = () => {
 
         
             <div>
-                <img className="redesIcon" src="./assets/instagram.png" alt="instagram"></img>
-                <img className="redesIcon" src="./assets/wpp.png" alt="wpp"></img>
-                <img className="twitter" src="./assets/twitter.png" alt="twitter"></img>
+                <img className="redesIcon" src="/assets/instagram.png" alt="instagram"></img>
+                <img className="redesIcon" src="/assets/wpp.png" alt="wpp"></img>
+                <img className="twitter" src="/assets/twitter.png" alt="twitter"></img>
             </div>
 
         </footer>
