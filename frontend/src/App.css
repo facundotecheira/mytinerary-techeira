@@ -176,6 +176,7 @@
   /* border: 1px solid black; */
   align-items: center;
   height: 6rem;
+  margin-bottom: 5rem;
 }
 
 .citiInput {
@@ -184,14 +185,14 @@
 /* City */
 
 .containerCity {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
 .containerCityInfo {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   /* background-color: black; */
 }
 
@@ -212,6 +213,11 @@
   text-align: center;
 }
 
+.linktocity{
+  text-decoration: none;
+  
+}
+
 .imgCity {
   width: 30rem;
 }
@@ -228,6 +234,27 @@
 
 .buttonCity:hover{
   padding: .9rem;
+}
+
+
+.containerEmpty{
+  
+  width: 100% !important;
+  margin-top: 2rem;
+  
+}
+
+.ayudaa{
+  
+  width: 20rem;
+  margin: 0 auto;
+}
+
+.ayudaa > h1{
+
+  font-family: "Petemoss", "cursive";  
+  font-size: 12vmin;
+
 }
 
 /* footer */
@@ -350,6 +377,32 @@ footer .navegation a:hover {
     margin: 0 auto;
   }
 
+  /* city */
+
+  .containerCity {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    /* align-items: center; */
+  }
+
+  .containerCityInfo {
+    /* border: 1px solid black; */
+    display: flex;
+    width: 35rem;
+    margin: 0 auto;
+    /* background-color: black; */
+  }
+
+  .containerCityInfo >h3{
+
+    margin-left: 2rem;
+    font-size: 1rem;
+    
+
+  }
+
   /* footer */
 
   footer {
@@ -408,7 +461,7 @@ footer .navegation a:hover {
     width: 2rem;
   }
 
-  /* carrucel */
+  /* Carrucel */
 
   .h1Galery {
     font-size: 15vmin;
@@ -421,6 +474,32 @@ footer .navegation a:hover {
   .imgGalery {
     width: 20rem;
     margin: 0 auto;
+  }
+
+  /* City */
+
+  .containerCity {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    /* align-items: center; */
+  }
+
+  .containerCityInfo {
+    /* border: 1px solid black; */
+    display: flex;
+    width: 35rem;
+    margin: 0 auto;
+    /* background-color: black; */
+  }
+
+  .containerCityInfo >h3{
+
+    margin-left: 2rem;
+    font-size: 1rem;
+    
+
   }
 
   /* footer */

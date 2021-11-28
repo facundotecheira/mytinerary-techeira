@@ -22,10 +22,21 @@ const { response } = require('express')
 const Citymodel = require('../models/Citymodel')
 
 const galeryControllers = {
-    getGalery: (req,res)=>{
-        
-        const cities = Citymodel.find()
-        .then((response)=> res.json({response}))
+    getGalery: async(req,res)=>{
+        let cities
+        let error = null
+        try{
+            cities = await Citymodel.find()
+        }catch(error){
+            error = error
+            console.error(error)
+        }
+        res.json({
+            response: error ? 'ERROR':cities,
+            succes:error ? false:true,
+            error:error
+        })
+        // .then((response)=> res.json({response}))
         
     },
     postGalery: (req,res)=>{
@@ -34,7 +45,23 @@ const galeryControllers = {
         const citi = new Citymodel({path,title,country,currency,language}).save()
         .then((response)=>res.json({response}))
         
+    },
+    updateGalery: async(req,res)=>{
+        
+        let id = req.params.id
+        let city = req.body
+        let actualizado
+        console.log(city)
+        try{
+            actualizado = await Citymodel.findOneAndUpdate({_id:id},city,{new:true})
+            console.log(actualizado)
+        }catch(error){
+            console.log(error)
+        }
+        res.json({success:actualizado ? true : false})
+        
     }
+    
 }
 
 module.exports = galeryControllers

@@ -2,21 +2,35 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+
 
 const CitiesImg = (props) => {
-  
-  const galery = props.galery
-  
-  // const [galery, setGalery] = useState([]);
+  // window.scrollTo(0, 0);
+  const galery = props.galery;
+  const [busqueda, setBusqueda] = useState("");
+  const [ciudades, setCiudades] = useState([]);
 
-  // useEffect(() => {
-  //   fetch('http://localhost:4000/api/galery')
-  //     .then(res => res.json())
-  //     .then(data => setGalery(data.response))
-  //     .catch(err => console.log(err.message))
 
-  // }, [])
+
+  const handleChange = e => {
+    setBusqueda(e.target.value);
+  }
+
+  useEffect(() => { filtrar('') }, [galery])
+  useEffect(() => { filtrar(busqueda) }, [busqueda])
+
+
+  const filtrar = (terminoBusqueda) => {
+    var resultadosBusqueda = galery.filter((elemento) => {
+      if (elemento.title.toString().toLowerCase().includes(terminoBusqueda.trim().toLowerCase())) {
+        return elemento;
+      }
+    });
+    setCiudades(resultadosBusqueda);
+
+  }
 
   const settings = {
     arrows: false,
@@ -28,7 +42,7 @@ const CitiesImg = (props) => {
     // autoplaySpeed: 4000,
     cssEase: "linear",
     className: "slides",
-    adaptiveHeight: true,
+    adaptiveHeight: false,
     pauseOnHover: false,
     swipe: false,
     responsive: [
@@ -96,17 +110,17 @@ const CitiesImg = (props) => {
   }
 
   return (
+
     <>
       <h1 className='h1Galery'>All Cities</h1>
-      <div className = "citiesH2Input">
-          <h2 className="text-center">FIND YOUR NEW ADVENTURE!</h2>
-          <input className="citiInput" type="text" placeholder="Search a city" />
+      <div className="citiesH2Input">
+        <h2 className="text-center">FIND YOUR NEW ADVENTURE!</h2>
+        <input className="citiInput" type="text" value={busqueda} onChange={handleChange} />
       </div>
 
       <div className="citiesGalery">
         <Slider {...settings}>
-          {galery.map((gal) => {
-           
+          {ciudades.length > 0 ? ciudades.map((gal) => {
             return (
               <div key={gal.title} className="galery">
                 <div key={gal.title} className="galGalery">
@@ -116,7 +130,7 @@ const CitiesImg = (props) => {
                     <h2 key={gal.title}>
                       {gal.title}, {gal.country}
                     </h2>
-                    <Link to = {`/cities/${gal.title}/${gal.path}/${gal.country}/${gal.currency}/${gal.language}`}>
+                    <Link className= "linktocity" to={`/cities/${gal.title}/${gal.path}/${gal.country}/${gal.currency}/${gal.language}`}>
                       Ver elemento
                     </Link>
                   </div>
@@ -124,7 +138,14 @@ const CitiesImg = (props) => {
 
               </div>
             )
-          })}
+          }) :
+            <div className="containerEmpty">
+              <div className="ayudaa">
+                <h1>No results found</h1>
+              </div>
+
+            </div>
+          }
         </Slider>
 
       </div>
