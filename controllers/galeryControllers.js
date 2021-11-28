@@ -22,46 +22,69 @@ const { response } = require('express')
 const Citymodel = require('../models/Citymodel')
 
 const galeryControllers = {
-    getGalery: async(req,res)=>{
+    getGalery: async (req, res) => {
         let cities
         let error = null
-        try{
+        try {
             cities = await Citymodel.find()
-        }catch(error){
+        } catch (error) {
             error = error
             console.error(error)
         }
         res.json({
-            response: error ? 'ERROR':cities,
-            succes:error ? false:true,
-            error:error
+            response: error ? 'ERROR' : cities,
+            succes: error ? false : true,
+            error: error
         })
         // .then((response)=> res.json({response}))
-        
+
     },
-    postGalery: (req,res)=>{
-        
-        const {path,title,country,currency,language} = req.body
-        const citi = new Citymodel({path,title,country,currency,language}).save()
-        .then((response)=>res.json({response}))
-        
+    getAcity: async (req, res) => {
+        let city
+        const id = req.params.id
+        try {
+            city = await Citymodel.findOne({ _id: id })
+        } catch (error) {
+            console.log(error)
+        }
+        res.json({ response: city, success: true })
     },
-    updateGalery: async(req,res)=>{
-        
+    postGalery: (req, res) => {
+
+        const { path, title, country, currency, language } = req.body
+        const citi = new Citymodel({ path, title, country, currency, language }).save()
+            .then((response) => res.json({ response }))
+
+    },
+    updateGalery: async (req, res) => {
+
         let id = req.params.id
         let city = req.body
         let actualizado
         console.log(city)
-        try{
-            actualizado = await Citymodel.findOneAndUpdate({_id:id},city,{new:true})
+        try {
+            actualizado = await Citymodel.findOneAndUpdate({ _id: id }, city, { new: true })
             console.log(actualizado)
+        } catch (error) {
+            console.log(error)
+        }
+        res.json({ success: actualizado ? true : false })
+
+    },
+    deleteGalery: async(req,res)=>{
+        const id = req.params.id
+        let city
+        try{
+            await Citymodel.findOneAndDelete({_id:id})
+            city = await Citymodel.find()
+
         }catch(error){
             console.log(error)
         }
-        res.json({success:actualizado ? true : false})
-        
-    }
-    
+
+        res.json({response: city , success:true})
+    },
+
 }
 
 module.exports = galeryControllers
