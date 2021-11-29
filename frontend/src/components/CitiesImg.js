@@ -61,7 +61,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 768,
         settings: {
-          rows: galery.length,
+          rows: 15,
           adaptiveHeight: false,
           dots: false,
           arrows: false,
@@ -72,7 +72,7 @@ const CitiesImg = (props) => {
         breakpoint: 600,
         settings: {
           adaptiveHeight: false,
-          rows: galery.length,
+          rows: 15,
           slidesPerRow: 1,
           dots: false,
           arrows: false,
@@ -82,7 +82,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 480,
         settings: {
-          rows: galery.length,
+          rows: 15,
           slidesPerRow: 1,
           dots: false,
           arrows: false,
@@ -93,7 +93,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 400,
         settings: {
-          rows: galery.length,
+          rows: 15,
           slidesPerRow: 1,
           dots: false,
           arrows: false,
@@ -104,7 +104,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 360,
         settings: {
-          rows: galery.length,
+          rows: 15,
           slidesPerRow: 1,
           arrows: false,
           dots: false,
