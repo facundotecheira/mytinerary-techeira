@@ -139,7 +139,7 @@ const CitiesImg = (props) => {
                       {gal.title}, {gal.country}
                     </h2>
                     <Link className= "linktocity" to={`/cities/${gal.title}/${gal.path}/${gal.country}/${gal.currency}/${gal.language}`}>
-                      Ver elemento
+                      Read more
                     </Link>
                   </div>
                 </div>
