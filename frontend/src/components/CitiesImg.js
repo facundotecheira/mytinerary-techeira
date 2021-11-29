@@ -24,7 +24,9 @@ const CitiesImg = (props) => {
 
   const filtrar = (terminoBusqueda) => {
     var resultadosBusqueda = galery.filter((elemento) => {
-      if (elemento.title.toString().toLowerCase().includes(terminoBusqueda.trim().toLowerCase())) {
+      if (elemento.title.toString().toLowerCase().includes(terminoBusqueda.trim().toLowerCase()) 
+        || elemento.country.toString().toLowerCase().includes(terminoBusqueda.trim().toLowerCase()))
+      {
         return elemento;
       }
     });
@@ -49,7 +51,8 @@ const CitiesImg = (props) => {
       {
         breakpoint: 1024,
         settings: {
-          rows: 2,
+          rows: 8,
+          adaptiveHeight: false,
           slidesPerRow: 2,
           infinite: false,
 
@@ -58,7 +61,8 @@ const CitiesImg = (props) => {
       {
         breakpoint: 768,
         settings: {
-
+          rows: galery.length,
+          adaptiveHeight: false,
           dots: false,
           arrows: false,
 
@@ -67,7 +71,8 @@ const CitiesImg = (props) => {
       {
         breakpoint: 600,
         settings: {
-          rows: 4,
+          adaptiveHeight: false,
+          rows: galery.length,
           slidesPerRow: 1,
           dots: false,
           arrows: false,
@@ -77,30 +82,33 @@ const CitiesImg = (props) => {
       {
         breakpoint: 480,
         settings: {
-          rows: 4,
+          rows: galery.length,
           slidesPerRow: 1,
           dots: false,
           arrows: false,
+          adaptiveHeight: false,
 
         }
       },
       {
         breakpoint: 400,
         settings: {
-          rows: 4,
+          rows: galery.length,
           slidesPerRow: 1,
           dots: false,
           arrows: false,
+          adaptiveHeight: false,
 
         }
       },
       {
         breakpoint: 360,
         settings: {
-          rows: 4,
+          rows: galery.length,
           slidesPerRow: 1,
           arrows: false,
           dots: false,
+          adaptiveHeight: false,
 
         }
       }
@@ -115,7 +123,7 @@ const CitiesImg = (props) => {
       <h1 className='h1Galery'>All Cities</h1>
       <div className="citiesH2Input">
         <h2 className="text-center">FIND YOUR NEW ADVENTURE!</h2>
-        <input className="citiInput" type="text" value={busqueda} onChange={handleChange} />
+        <input className="citiInput" type="text" value={busqueda} placeholder=" Search a city or Country" onChange={handleChange} />
       </div>
 
       <div className="citiesGalery">

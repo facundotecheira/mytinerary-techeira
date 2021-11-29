@@ -162,7 +162,7 @@
 /* cities */
 
 .citiesGalery {
-  height: 450vh;
+  height: 100%;
   margin-top: 5rem;
   /* border: 1px solid black; */
   /* width: 60rem; */
@@ -180,6 +180,7 @@
 }
 
 .citiInput {
+  border: 1px solid black;
 }
 
 /* City */
@@ -187,18 +188,21 @@
 .containerCity {
   /* border: 1px solid black; */
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  background-color: black;
 }
 
 .containerCityInfo {
   /* border: 1px solid black; */
   /* background-color: black; */
+  padding: 1rem;
 }
 
-.containerCityInfo > h2 {
+.containerCityInfo > h3 {
   /* font-family: "Petemoss", "cursive"; */
-  text-align: center;
+  /* text-align: center; */
+  color: white;
   /* font-size: vmin; */
 
 }
@@ -222,6 +226,7 @@
   width: 30rem;
 }
 .divButtonCity{
+  margin-left: 1rem;
   margin-bottom: 2rem;
 }
 .buttonCity{
@@ -248,12 +253,14 @@
   
   width: 20rem;
   margin: 0 auto;
+  /* border: 1px solid black; */
 }
 
 .ayudaa > h1{
 
   font-family: "Petemoss", "cursive";  
   font-size: 12vmin;
+  text-align: center;
 
 }
 
@@ -304,6 +311,23 @@ footer .navegation a:hover {
 }
 
 @media only screen and (max-width: 1024px) {
+
+  /* cities */
+  .citiesGalery {
+    height: 100%;
+    margin-top: 5rem;
+    /* border: 1px solid black; */
+    /* width: 60rem; */
+    margin: 0 auto;
+  }
+  /* city */
+
+  .divButtonCity{
+    margin-top: 2rem;
+    margin-bottom: 29rem;
+  }
+
+
   /* footer */
 
   footer {
@@ -377,6 +401,17 @@ footer .navegation a:hover {
     margin: 0 auto;
   }
 
+  /* cities */
+
+  .citiesGalery {
+    height: 100%;
+    margin-top: 5rem;
+    /* border: 1px solid black; */
+    /* width: 60rem; */
+    margin: 0 auto;
+  }
+  
+
   /* city */
 
   .containerCity {
@@ -398,9 +433,13 @@ footer .navegation a:hover {
   .containerCityInfo >h3{
 
     margin-left: 2rem;
-    font-size: 1rem;
+    font-size: .8rem;
     
+  }
 
+  .divButtonCity{
+    margin-top: 2rem;
+    margin-bottom: 9rem;
   }
 
   /* footer */
@@ -476,6 +515,17 @@ footer .navegation a:hover {
     margin: 0 auto;
   }
 
+  /* cities */
+
+  .citiesGalery {
+    height: 100%;
+    margin-top: 5rem;
+    /* border: 1px solid black; */
+    /* width: 60rem; */
+    margin: 0 auto;
+  }
+  
+
   /* City */
 
   .containerCity {
@@ -489,18 +539,30 @@ footer .navegation a:hover {
   .containerCityInfo {
     /* border: 1px solid black; */
     display: flex;
-    width: 35rem;
+    flex-direction: column;
+    /* width: 35rem; */
     margin: 0 auto;
     /* background-color: black; */
   }
 
   .containerCityInfo >h3{
 
-    margin-left: 2rem;
-    font-size: 1rem;
+    margin-left: 1rem;
+    font-size: .7rem;
     
 
   }
+
+  .imgCity {
+    width: 20rem;
+  }
+
+
+  .divButtonCity{
+    margin-top: 2rem;
+    margin-bottom: 10rem;
+  }
+
 
   /* footer */
 
