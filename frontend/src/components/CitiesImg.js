@@ -18,7 +18,7 @@ const CitiesImg = (props) => {
     setBusqueda(e.target.value);
   }
 
-// s
+// sa
   useEffect(() => { filtrar(busqueda) }, [busqueda])
 
   console.log(ciudades)
