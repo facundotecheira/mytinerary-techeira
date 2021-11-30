@@ -11,17 +11,17 @@ const CitiesImg = (props) => {
   const galery = props.galery;
   const [busqueda, setBusqueda] = useState(" ");
   const [ciudades, setCiudades] = useState([]);
-
-
+  const [fila,setFila] = useState(1)
+  // let fila = 0;
 
   const handleChange = e => {
     setBusqueda(e.target.value);
   }
 
-// sa
+  
   useEffect(() => { filtrar(busqueda) }, [busqueda])
 
-  console.log(ciudades)
+  
 
   const filtrar = (terminoBusqueda) => {
     var resultadosBusqueda = galery.filter((elemento) => {
@@ -32,13 +32,13 @@ const CitiesImg = (props) => {
       }
     });
     setCiudades(resultadosBusqueda);
-
+    setFila(Math.ceil(resultadosBusqueda.length / 2))
   }
 
   const settings = {
     arrows: false,
     infinite: false,
-    rows: 8,
+    rows: fila,
     slidesPerRow: 2,
     autoplay: false,
     // speed: 0,
@@ -52,7 +52,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 1024,
         settings: {
-          // rows: 8,
+          rows: fila,
           adaptiveHeight: false,
           slidesPerRow: 2,
           infinite: false,
@@ -62,7 +62,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 768,
         settings: {
-          // rows: 15,
+          rows: ciudades.length,
           adaptiveHeight: false,
           dots: false,
           arrows: false,
@@ -73,7 +73,7 @@ const CitiesImg = (props) => {
         breakpoint: 600,
         settings: {
           adaptiveHeight: false,
-          // rows: 15,
+          rows: ciudades.length,
           slidesPerRow: 1,
           dots: false,
           arrows: false,
@@ -83,7 +83,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 480,
         settings: {
-          // rows: 15,
+          rows: ciudades.length,
           slidesPerRow: 1,
           dots: false,
           arrows: false,
@@ -94,7 +94,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 400,
         settings: {
-          // rows: 15,
+          rows: ciudades.length,
           slidesPerRow: 1,
           dots: false,
           arrows: false,
@@ -105,7 +105,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 360,
         settings: {
-          // rows: 15,
+          rows: ciudades.length,
           slidesPerRow: 1,
           arrows: false,
           dots: false,
