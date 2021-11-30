@@ -8,7 +8,7 @@ export default class Cities extends React.Component{
 
     constructor(){
         super();
-        this.state = { galery: [] };
+        this.state = {};
     }
 
     componentDidMount(){
@@ -20,17 +20,17 @@ export default class Cities extends React.Component{
         
          
     }
-
+    
     render(){
         return(
             <>
-            <Nav/>
-            <CitiesImg galery = {this.state.galery}/>
+            <Nav />
+            {this.state.galery && <CitiesImg galery = {this.state.galery}/>}
             <Footer/>
             </>
         )
     }
 
-
+  
 
 }

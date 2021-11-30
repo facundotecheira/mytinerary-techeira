@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 const CitiesImg = (props) => {
   // window.scrollTo(0, 0);
   const galery = props.galery;
-  const [busqueda, setBusqueda] = useState("");
+  const [busqueda, setBusqueda] = useState(" ");
   const [ciudades, setCiudades] = useState([]);
 
 
@@ -18,9 +18,10 @@ const CitiesImg = (props) => {
     setBusqueda(e.target.value);
   }
 
-  useEffect(() => { filtrar('') }, [galery])
+
   useEffect(() => { filtrar(busqueda) }, [busqueda])
 
+  console.log(ciudades)
 
   const filtrar = (terminoBusqueda) => {
     var resultadosBusqueda = galery.filter((elemento) => {
@@ -51,7 +52,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 1024,
         settings: {
-          rows: 8,
+          // rows: 8,
           adaptiveHeight: false,
           slidesPerRow: 2,
           infinite: false,
@@ -61,7 +62,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 768,
         settings: {
-          rows: 15,
+          // rows: 15,
           adaptiveHeight: false,
           dots: false,
           arrows: false,
@@ -72,7 +73,7 @@ const CitiesImg = (props) => {
         breakpoint: 600,
         settings: {
           adaptiveHeight: false,
-          rows: 15,
+          // rows: 15,
           slidesPerRow: 1,
           dots: false,
           arrows: false,
@@ -82,7 +83,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 480,
         settings: {
-          rows: 15,
+          // rows: 15,
           slidesPerRow: 1,
           dots: false,
           arrows: false,
@@ -93,7 +94,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 400,
         settings: {
-          rows: 15,
+          // rows: 15,
           slidesPerRow: 1,
           dots: false,
           arrows: false,
@@ -104,7 +105,7 @@ const CitiesImg = (props) => {
       {
         breakpoint: 360,
         settings: {
-          rows: 15,
+          // rows: 15,
           slidesPerRow: 1,
           arrows: false,
           dots: false,
@@ -139,7 +140,7 @@ const CitiesImg = (props) => {
                       {gal.title}, {gal.country}
                     </h2>
                     <Link className= "linktocity" to={`/cities/${gal.title}/${gal.path}/${gal.country}/${gal.currency}/${gal.language}`}>
-                      Ver elemento
+                      Read more
                     </Link>
                   </div>
                 </div>
