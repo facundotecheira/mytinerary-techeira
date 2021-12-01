@@ -106,7 +106,7 @@
 }
 
 .divGalery {
-  height: 40rem;
+  height: 100%;
   margin-top: 5rem;
   /* border: 1px solid black; */
   /* width: 60rem; */
@@ -116,7 +116,7 @@
 .galGalery {
   border: 1px solid black;
   border-radius: 5px;
-  width: 20.1rem;
+  width: 25.1rem;
   margin: 0 auto;
   margin-bottom: 1rem;
   /* margin-right: 1rem; */
@@ -126,7 +126,7 @@
 }
 
 .imgGalery {
-  width: 20rem;
+  width: 25rem;
   margin: 0 auto;
 }
 
@@ -310,6 +310,8 @@ footer .navegation a:hover {
   color: aquamarine;
 }
 
+
+
 @media only screen and (max-width: 1024px) {
 
   /* cities */
@@ -396,11 +398,24 @@ footer .navegation a:hover {
     font-size: 15vmin;
   }
 
+  .galGalery {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 23rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    /* margin-right: 1rem; */
+    /* margin-left: 1rem; */
+    /* background: linear-gradient(129deg, rgba(131,210,242,1) 33%, rgba(230,225,238,1) 65%); */
+    background-color: black;
+  }
+  
   .imgGalery {
-    width: 20rem;
+    width: 23rem;
     margin: 0 auto;
   }
 
+  
   /* cities */
 
   .citiesGalery {
@@ -510,10 +525,24 @@ footer .navegation a:hover {
     height: 90rem;
   }
 
+  .galGalery {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 25.1rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    /* margin-right: 1rem; */
+    /* margin-left: 1rem; */
+    /* background: linear-gradient(129deg, rgba(131,210,242,1) 33%, rgba(230,225,238,1) 65%); */
+    background-color: black;
+  }
+  
   .imgGalery {
-    width: 20rem;
+    width: 25rem;
     margin: 0 auto;
   }
+
+ 
 
   /* cities */
 
