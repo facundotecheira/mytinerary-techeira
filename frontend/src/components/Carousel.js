@@ -14,7 +14,7 @@ const Carousel = () => {
     autoplaySpeed: 4000,
     cssEase: "linear",
     className: "slides",
-    adaptiveHeight: true,
+    // adaptiveHeight: true,
     pauseOnHover: false,
     swipe: false,  
     responsive: [
