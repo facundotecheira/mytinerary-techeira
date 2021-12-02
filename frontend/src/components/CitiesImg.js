@@ -9,19 +9,18 @@ import { useEffect, useState } from 'react';
 const CitiesImg = (props) => {
   // window.scrollTo(0, 0);
   const galery = props.galery;
-  const [busqueda, setBusqueda] = useState(" ");
+  const [busqueda, setBusqueda] = useState("");
   const [ciudades, setCiudades] = useState([]);
-  const [fila,setFila] = useState(1)
-  // let fila = 0;
+
+
 
   const handleChange = e => {
     setBusqueda(e.target.value);
   }
 
-  
+
   useEffect(() => { filtrar(busqueda) }, [busqueda])
 
-  
 
   const filtrar = (terminoBusqueda) => {
     var resultadosBusqueda = galery.filter((elemento) => {
@@ -32,91 +31,10 @@ const CitiesImg = (props) => {
       }
     });
     setCiudades(resultadosBusqueda);
-    setFila(Math.ceil(resultadosBusqueda.length / 2))
-  }
-
-  const settings = {
-    arrows: false,
-    infinite: false,
-    rows: fila,
-    slidesPerRow: 2,
-    autoplay: false,
-    // speed: 0,
-    // autoplaySpeed: 4000,
-    cssEase: "linear",
-    className: "slides",
-    adaptiveHeight: false,
-    pauseOnHover: false,
-    swipe: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          rows: fila,
-          adaptiveHeight: false,
-          slidesPerRow: 2,
-          infinite: false,
-
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          rows: ciudades.length,
-          adaptiveHeight: false,
-          dots: false,
-          arrows: false,
-
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          adaptiveHeight: false,
-          rows: ciudades.length,
-          slidesPerRow: 1,
-          dots: false,
-          arrows: false,
-
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          rows: ciudades.length,
-          slidesPerRow: 1,
-          dots: false,
-          arrows: false,
-          adaptiveHeight: false,
-
-        }
-      },
-      {
-        breakpoint: 400,
-        settings: {
-          rows: ciudades.length,
-          slidesPerRow: 1,
-          dots: false,
-          arrows: false,
-          adaptiveHeight: false,
-
-        }
-      },
-      {
-        breakpoint: 360,
-        settings: {
-          rows: ciudades.length,
-          slidesPerRow: 1,
-          arrows: false,
-          dots: false,
-          adaptiveHeight: false,
-
-        }
-      }
-    ]
-
 
   }
+
+ 
 
   return (
 
@@ -127,8 +45,9 @@ const CitiesImg = (props) => {
         <input className="citiInput" type="text" value={busqueda} placeholder=" Search a city or Country" onChange={handleChange} />
       </div>
 
+    
       <div className="citiesGalery">
-        <Slider {...settings}>
+     
           {ciudades.length > 0 ? ciudades.map((gal) => {
             return (
               <div key={gal.title} className="galery">
@@ -155,9 +74,8 @@ const CitiesImg = (props) => {
 
             </div>
           }
-        </Slider>
-
-      </div>
+        </div>
+     
     </>
   );
 }

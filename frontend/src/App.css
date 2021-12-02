@@ -164,8 +164,14 @@
 .citiesGalery {
   height: 100%;
   margin-top: 5rem;
-  /* border: 1px solid black; */
-  /* width: 60rem; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+  width: 80%;
+  gap: 3rem;
+  
   margin: 0 auto;
 }
 
@@ -181,6 +187,7 @@
 
 .citiInput {
   border: 1px solid black;
+  width: 60%;
 }
 
 /* City */
@@ -318,10 +325,16 @@ footer .navegation a:hover {
   .citiesGalery {
     height: 100%;
     margin-top: 5rem;
-    /* border: 1px solid black; */
-    /* width: 60rem; */
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
+
+    width: 100%;
     margin: 0 auto;
   }
+
+ 
   /* city */
 
   .divButtonCity{
@@ -399,7 +412,7 @@ footer .navegation a:hover {
   }
 
   .galGalery {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 5px;
     width: 23rem;
     margin: 0 auto;
@@ -421,8 +434,13 @@ footer .navegation a:hover {
   .citiesGalery {
     height: 100%;
     margin-top: 5rem;
+    display:block;
+    flex-wrap: nowrap;
+    justify-content: baseline;
+    align-items: baseline;
+
     /* border: 1px solid black; */
-    /* width: 60rem; */
+    width: 100%;
     margin: 0 auto;
   }
   
@@ -492,7 +510,7 @@ footer .navegation a:hover {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 300px) and (max-width: 600px) {
   /* Navbar */
 
   .menuH {
@@ -526,9 +544,9 @@ footer .navegation a:hover {
   }
 
   .galGalery {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 5px;
-    width: 25.1rem;
+    width: 100%;
     margin: 0 auto;
     margin-bottom: 1rem;
     /* margin-right: 1rem; */
@@ -536,9 +554,10 @@ footer .navegation a:hover {
     /* background: linear-gradient(129deg, rgba(131,210,242,1) 33%, rgba(230,225,238,1) 65%); */
     background-color: black;
   }
-  
+
+
   .imgGalery {
-    width: 25rem;
+    width: 100%;
     margin: 0 auto;
   }
 
@@ -549,8 +568,13 @@ footer .navegation a:hover {
   .citiesGalery {
     height: 100%;
     margin-top: 5rem;
+    display:block;
+    flex-wrap: nowrap;
+    justify-content: baseline;
+    align-items: baseline;
     /* border: 1px solid black; */
-    /* width: 60rem; */
+    /* border: 1px solid black; */
+    width: 100%;
     margin: 0 auto;
   }
   
@@ -606,6 +630,7 @@ footer .navegation a:hover {
     background-size: auto;
     background-position: center;
     background-position-y: -4rem;
+    /* width: 100%; */
   }
 
   footer .navegation {
