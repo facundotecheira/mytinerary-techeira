@@ -2,8 +2,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import Galery from "./Array";
+import { connect } from "react-redux";
 
-const Carousel = () => {
+const Carousel = (props) => {
   const settings = {
     arrows: true,
     infinite: true,
@@ -82,6 +83,7 @@ const Carousel = () => {
   }
   return (
     <>
+    {/* <h1>{props.fechita}</h1> */}
       <h1 className='h1Galery'>Popular MYtineraries</h1>
       <div className="divGalery">
         <Slider {...settings}>
@@ -109,6 +111,12 @@ const Carousel = () => {
   )
 }
 
+const mapStateToProps = (state) =>{
+
+    return{
+      fechita: state.galery.fecha,
+    }
+}
 
 
-export default Carousel;
+export default connect(mapStateToProps)(Carousel);

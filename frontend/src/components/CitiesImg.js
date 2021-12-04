@@ -1,54 +1,48 @@
-// import { useEffect, useState } from 'react';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick';
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react';
+import { useEffect,useRef, useState } from 'react';
+import citiesAction from "../redux/actions/citiesAction";
+import { connect } from "react-redux";
 
 
 const CitiesImg = (props) => {
-  // window.scrollTo(0, 0);
-  const galery = props.galery;
-  const [busqueda, setBusqueda] = useState("");
-  const [ciudades, setCiudades] = useState([]);
+  const e = useRef();
 
+  const [ciudades, setCiudades] = useState(props.cities);
 
+  
+  useEffect (()=>{
+    props.filtrarcities(e.current.value)
+  },[])
 
-  const handleChange = e => {
-    setBusqueda(e.target.value);
-  }
+  
 
+  useEffect(()=>{
+    if(ciudades !== props.auxiliar ){
+      setCiudades(props.auxiliar) 
+    }
+  },[props.auxiliar])
 
-  useEffect(() => { filtrar(busqueda) }, [busqueda])
-
-
-  const filtrar = (terminoBusqueda) => {
-    var resultadosBusqueda = galery.filter((elemento) => {
-      if (elemento.title.toString().toLowerCase().includes(terminoBusqueda.trim().toLowerCase()) 
-        || elemento.country.toString().toLowerCase().includes(terminoBusqueda.trim().toLowerCase()))
-      {
-        return elemento;
-      }
-    });
-    setCiudades(resultadosBusqueda);
-
-  }
+    
+    const filtrando = ()=>{
+      props.filtrarcities(e.current.value)
+    }
+  
 
  
-
   return (
 
     <>
       <h1 className='h1Galery'>All Cities</h1>
       <div className="citiesH2Input">
         <h2 className="text-center">FIND YOUR NEW ADVENTURE!</h2>
-        <input className="citiInput" type="text" value={busqueda} placeholder=" Search a city or Country" onChange={handleChange} />
+        <input className="citiInput" type="text" ref={e}  onChange={filtrando} placeholder=" Search a city or Country"  />
       </div>
 
     
       <div className="citiesGalery">
      
           {ciudades.length > 0 ? ciudades.map((gal) => {
+            
             return (
               <div key={gal.title} className="galery">
                 <div key={gal.title} className="galGalery">
@@ -58,7 +52,7 @@ const CitiesImg = (props) => {
                     <h2 key={gal.title}>
                       {gal.title}, {gal.country}
                     </h2>
-                    <Link className= "linktocity" to={`/cities/${gal.title}/${gal.path}/${gal.country}/${gal.currency}/${gal.language}`}>
+                    <Link className= "linktocity" to={`/cities/${gal.title}/${gal.path}/${gal.country}/${gal.currency}/${gal.language}/${gal._id}`}>
                       Read more
                     </Link>
                   </div>
@@ -80,5 +74,23 @@ const CitiesImg = (props) => {
   );
 }
 
+const mapStateToProps = (state) =>{
 
+  return{
+    
+    auxiliar: state.galery.auxiliar
+
+  }
+}
+
+const mapDispatchToProps = {
+  
+  filtrarcities: citiesAction.filtercities
+
+}
+
+<<<<<<< HEAD
 export default CitiesImg;
+=======
+export default connect(mapStateToProps,mapDispatchToProps)(CitiesImg);
+>>>>>>> development
