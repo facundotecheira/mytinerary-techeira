@@ -18,8 +18,7 @@ const CitiesImg = (props) => {
 
   useEffect(()=>{
     if(ciudades !== props.auxiliar ){
-      setCiudades(props.auxiliar)
-      console.log('entre')
+      setCiudades(props.auxiliar) 
     }
   },[props.auxiliar])
 
@@ -43,6 +42,7 @@ const CitiesImg = (props) => {
       <div className="citiesGalery">
      
           {ciudades.length > 0 ? ciudades.map((gal) => {
+            
             return (
               <div key={gal.title} className="galery">
                 <div key={gal.title} className="galGalery">
@@ -52,7 +52,7 @@ const CitiesImg = (props) => {
                     <h2 key={gal.title}>
                       {gal.title}, {gal.country}
                     </h2>
-                    <Link className= "linktocity" to={`/cities/${gal.title}/${gal.path}/${gal.country}/${gal.currency}/${gal.language}`}>
+                    <Link className= "linktocity" to={`/cities/${gal.title}/${gal.path}/${gal.country}/${gal.currency}/${gal.language}/${gal._id}`}>
                       Read more
                     </Link>
                   </div>
@@ -88,8 +88,5 @@ const mapDispatchToProps = {
   filtrarcities: citiesAction.filtercities
 
 }
-
-
-
 
 export default connect(mapStateToProps,mapDispatchToProps)(CitiesImg);

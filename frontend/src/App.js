@@ -14,7 +14,7 @@ function App() {
       <Routes>
        <Route path='/' element={<Home/>} /> 
        <Route path='/cities' element={<Cities/>} /> 
-       <Route path = '/cities/:title/:path/:country/:currency/:language' element = {<City/>}/>
+       <Route path = '/cities/:title/:path/:country/:currency/:language/:id' element = {<City/>}/>
       </Routes>
      
     </BrowserRouter>

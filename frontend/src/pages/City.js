@@ -2,7 +2,10 @@ import React from 'react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom'
-export default class City extends React.Component {
+import itineraryAction from '../redux/actions/itineraryAction'
+import { connect } from 'react-redux';
+
+ class City extends React.Component {
 
 
     constructor(props) {
@@ -10,15 +13,25 @@ export default class City extends React.Component {
         console.log(props)
 
     }
-
-
+    
     title = this.props.params.title;
     path = this.props.params.path;
     country = this.props.params.country;
     currency = this.props.params.currency;
     language = this.props.params.language;
+    id = this.props.params.id
+    
+    componentDidMount(){
+        this.props.obtenerItinerarios(this.id)
+    }
+    
+
+
+    
 
     render() {
+
+        console.log(this.props.listaItinerary)
 
         window.scrollTo(0, 0);
         return (
@@ -31,6 +44,7 @@ export default class City extends React.Component {
 
                         <h3>Currency: {this.currency}</h3>
                         <h3>Language: {this.language}</h3>
+                        <h3>Id: {this.id}</h3>
 
                     </div>
                     <div className="containerImgCity">
@@ -97,3 +111,16 @@ export default class City extends React.Component {
     }
 
 }
+
+const mapStateToProps = (state) =>{
+    return{
+        listaItinerary: state.itinerary.listItinerary
+    }
+}
+
+const mapDispatchToProps = {
+    obtenerItinerarios: itineraryAction.getAItinerary
+    // filtrarcities: citiesAction.filtercities
+  }
+
+export default connect(mapStateToProps,mapDispatchToProps)(City)
