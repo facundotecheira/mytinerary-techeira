@@ -2,30 +2,22 @@ import React from "react";
 import Nav from "../components/Nav";
 import CitiesImg from "../components/CitiesImg";
 import Footer from "../components/Footer";
+import citiesAction from "../redux/actions/citiesAction";
+import { connect } from "react-redux";
+
+ class Cities extends React.Component{
 
 
-export default class Cities extends React.Component{
-
-    constructor(){
-        super();
-        this.state = {};
-    }
 
     componentDidMount(){
-        
-            fetch('http://localhost:4000/api/galery')
-              .then(res => res.json())
-              .then(data => this.setState({galery:data.response}))
-              .catch(err => console.error(err.message))
-        
-         
+        this.props.obtenerCiudades()
     }
     
     render(){
         return(
             <>
             <Nav />
-            {this.state.galery && <CitiesImg galery = {this.state.galery}/>}
+            {this.props.listacities.length > 0 && <CitiesImg cities = {this.props.listacities}/>}
             <Footer/>
             </>
         )
@@ -34,3 +26,19 @@ export default class Cities extends React.Component{
   
 
 }
+
+const mapStateToProps = (state) =>{
+
+    return{
+        listacities: state.galery.listCities,
+      
+    }
+  }
+  
+  const mapDispatchToProps = {
+    obtenerCiudades: citiesAction.getCities,
+    // filtrarcities: citiesAction.filtercities
+  }
+  
+
+export default connect(mapStateToProps,mapDispatchToProps)(Cities);

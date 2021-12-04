@@ -36,7 +36,7 @@ const galeryControllers = {
             succes: error ? false : true,
             error: error
         })
-        // .then((response)=> res.json({response}))
+   
 
     },
     getAcity: async (req, res) => {

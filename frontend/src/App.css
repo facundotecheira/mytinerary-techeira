@@ -168,7 +168,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 80%;
   gap: 3rem;
   
@@ -270,6 +270,81 @@
   text-align: center;
 
 }
+
+/* city itinerary */
+
+.containerItinerary{
+  /* border: 1px solid black; */
+  margin-top: 1rem;
+  display: flex;
+}
+
+.section1{
+  display: flex;
+  /* border:1px solid black; */
+  width: 100%;
+  justify-content: space-between;
+}
+
+.section2{
+  display: flex;
+  /* border:1px solid black; */
+  width: 100%;
+  flex-direction: column;
+  margin-top: 1rem;
+  align-items: flex-start;
+  /* height: 7rem; */
+}
+
+.section3{
+  margin-top: 1rem;
+  /* border:1px solid black; */
+  margin-bottom: 1rem;
+}
+
+.section2 span{
+  cursor: pointer;
+  margin-left: 2rem;
+  
+} 
+.containerImgItinerary{
+  padding: 1rem;
+}
+
+.imgItinerary{
+  
+  width: 30rem;
+  border-radius: 5px;
+}
+
+.imgAuthor{
+  width: 7rem;
+  border-radius: 80px;
+}
+
+.imgLogoExploring{
+  width: 9rem;
+}
+
+.containerInfoItinerary{
+  padding: 1rem;
+  width: 100%;
+  /* border:1px solid yellow; */
+}
+
+
+
+.containerDataAuthor{
+  display: flex;
+  align-items: center;
+  /* border:1px solid black; */
+  height: 9rem;
+}
+
+.containerDataAuthor > h3{
+  margin-left: 1rem;
+}
+
 
 /* footer */
 
