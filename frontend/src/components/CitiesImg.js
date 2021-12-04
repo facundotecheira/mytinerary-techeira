@@ -89,8 +89,4 @@ const mapDispatchToProps = {
 
 }
 
-<<<<<<< HEAD
-export default CitiesImg;
-=======
 export default connect(mapStateToProps,mapDispatchToProps)(CitiesImg);
->>>>>>> development
