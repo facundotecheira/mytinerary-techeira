@@ -57,7 +57,6 @@ const CitiesImg = (props) => {
                     </Link>
                   </div>
                 </div>
-
               </div>
             )
           }) :

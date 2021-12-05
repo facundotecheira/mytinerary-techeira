@@ -9,7 +9,7 @@ class City extends React.Component {
 
 
     constructor(props) {
-        
+
         super(props)
         console.log(props)
 
@@ -32,7 +32,7 @@ class City extends React.Component {
         console.log(this.props.listaItinerary)
 
         window.scrollTo(0, 0);
-       
+
         return (
 
 
@@ -44,7 +44,7 @@ class City extends React.Component {
 
                         <h3>Currency: {this.currency}</h3>
                         <h3>Language: {this.language}</h3>
-                        
+
 
                     </div>
                     <div className="containerImgCity">
@@ -52,7 +52,7 @@ class City extends React.Component {
                     </div>
 
                 </div>
-                {this.props.listaItinerary.length>0 ? this.props.listaItinerary.map((ite) => {
+                {this.props.listaItinerary.length > 0 ? this.props.listaItinerary.map((ite) => {
                     return (
                         <div className="containerItinerary">
                             <div className="containerImgItinerary">
@@ -94,24 +94,39 @@ class City extends React.Component {
                                 </div>
 
 
+                                <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    view more
+                                </button>
+
+
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <h3 className="text-center">Under construction</h3>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
+
                         </div>
                     )
-                }):<div className="containerEmpty">
-                <div className="ayudaa">
-                  <h1>No results found</h1>
-                </div>
-  
-              </div>}
+                }) : <div className="containerEmpty">
+                    <div className="ayudaa">
+                        <h1>No itinerary found</h1>
+                    </div>
+
+                </div>}
 
 
-
-                <h3 className="text-center">Under construction</h3>
                 <div className="divButtonCity">
                     <Link to="/cities" className="buttonCity">Back to cities</Link>
                 </div>
-
-
 
                 <Footer />
             </>
@@ -128,7 +143,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     obtenerItinerarios: itineraryAction.getAItinerary
-    
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(City)
