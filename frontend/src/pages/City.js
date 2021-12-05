@@ -27,8 +27,9 @@ class City extends React.Component {
         this.props.obtenerItinerarios(this.id)
     }
 
-    render() {
+    
 
+    render() {
 
         window.scrollTo(0, 0);
 
