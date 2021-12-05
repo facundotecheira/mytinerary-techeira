@@ -89,6 +89,6 @@ const mapDispatchToProps = {
 
 }
 
-// probando
+
 
 export default connect(mapStateToProps,mapDispatchToProps)(CitiesImg);

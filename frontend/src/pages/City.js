@@ -5,36 +5,36 @@ import { Link } from 'react-router-dom'
 import itineraryAction from '../redux/actions/itineraryAction'
 import { connect } from 'react-redux';
 
- class City extends React.Component {
+class City extends React.Component {
 
 
     constructor(props) {
+        
         super(props)
         console.log(props)
 
     }
-    
+
     title = this.props.params.title;
     path = this.props.params.path;
     country = this.props.params.country;
     currency = this.props.params.currency;
     language = this.props.params.language;
     id = this.props.params.id
-    
-    componentDidMount(){
+
+
+    componentDidMount() {
         this.props.obtenerItinerarios(this.id)
     }
-    
-
-
-    
 
     render() {
 
         console.log(this.props.listaItinerary)
 
         window.scrollTo(0, 0);
+       
         return (
+
 
             <>
                 <Nav />
@@ -52,50 +52,58 @@ import { connect } from 'react-redux';
                     </div>
 
                 </div>
-                <div className="containerItinerary">
-                    <div className="containerImgItinerary">
-                        <img key={this.path} className="imgItinerary" alt={this.title} src="/assets/fuji.jpg" />
-                    </div>
-                    <div className="containerInfoItinerary">
+                {this.props.listaItinerary.length>0 ? this.props.listaItinerary.map((ite) => {
+                    return (
+                        <div className="containerItinerary">
+                            <div className="containerImgItinerary">
+                                <img key={this.path} className="imgItinerary" alt={this.title} src={`/assets/${ite.imageItinerary}`} />
+                            </div>
+                            <div className="containerInfoItinerary">
 
-                        <div className="section1">
-                            <div className="containerDataAuthor">
-                                <div className="nameAuthor">
-                                    <img key={this.path} className="imgAuthor" alt={this.title} src={`/assets/${this.path}`} />
+                                <div className="section1">
+                                    <div className="containerDataAuthor">
+                                        <div className="nameAuthor">
+                                            <img key={this.path} className="imgAuthor" alt={this.title} src={`/assets/${ite.imageAuthor}`} />
+                                        </div>
+                                        <h3>{ite.nameAuthor}</h3>
+                                    </div>
+                                    <div>
+                                        <img key={this.path} className="imgLogoExploring" alt={this.title} src="/assets/logo-exploradores.png" />
+                                    </div>
                                 </div>
-                                <h3>Facundo Techeira</h3>
+
+                                <div className="section2">
+                                    <h3>
+                                        {ite.title} <span> ❤ {ite.like}</span>
+                                    </h3>
+                                    <p>
+                                        {ite.description}
+                                    </p>
+
+                                </div>
+
+                                <div className="section3">
+                                    <Link to="/cities" className="ms-3">{ite.hashtags}</Link>
+
+                                </div>
+
+                                <div>
+                                    <span className="ms-3">
+                                        {ite.hours} {ite.price}
+                                    </span>
+                                </div>
+
+
                             </div>
-                            <div>
-                                <img key={this.path} className="imgLogoExploring" alt={this.title} src="/assets/logo-exploradores.png" />
-                            </div>
                         </div>
-
-                        <div className="section2">
-                            <h3>
-                                Excursion to Mount Fuji <span> ❤ 0</span>
-                            </h3>
-                            <p>
-                                Mount Fuji is the highest mountain in Japan, and also an icon with which Japan is recognized around the world. In addition, this site, considered sacred for millennia
-                            </p>
-
-                        </div>
-
-                        <div className="section3">
-                            <Link to="/cities" className="ms-3">#amazing</Link>
-                            <Link to="/cities" className="ms-3">#Mount Fuji</Link>
-                            <Link to="/cities" className="ms-3" >#Japan</Link>
-                            
-                        </div>
-                        
-                        <div>
-                            <span className="ms-3">
-                                ⏳ 3 horas 💸💸💸
-                            </span>
-                        </div>
-
-
-                    </div>
+                    )
+                }):<div className="containerEmpty">
+                <div className="ayudaa">
+                  <h1>No results found</h1>
                 </div>
+  
+              </div>}
+
 
 
                 <h3 className="text-center">Under construction</h3>
@@ -112,15 +120,15 @@ import { connect } from 'react-redux';
 
 }
 
-const mapStateToProps = (state) =>{
-    return{
+const mapStateToProps = (state) => {
+    return {
         listaItinerary: state.itinerary.listItinerary
     }
 }
 
 const mapDispatchToProps = {
     obtenerItinerarios: itineraryAction.getAItinerary
-    // filtrarcities: citiesAction.filtercities
-  }
+    
+}
 
-export default connect(mapStateToProps,mapDispatchToProps)(City)
+export default connect(mapStateToProps, mapDispatchToProps)(City)

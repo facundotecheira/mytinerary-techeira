@@ -10,11 +10,7 @@ const itineraryAction = {
 
     },
 
-    // filtercities:(algo) =>{
-    //     return (dispatch,getState)=>{
-    //         dispatch({type:'FILTER_CITIES',payload:algo})
-    //     }
-    // }
+
 }
 
 export default itineraryAction
