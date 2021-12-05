@@ -44,7 +44,7 @@ class City extends React.Component {
 
                         <h3>Currency: {this.currency}</h3>
                         <h3>Language: {this.language}</h3>
-                        <h3>Id: {this.id}</h3>
+                        
 
                     </div>
                     <div className="containerImgCity">
