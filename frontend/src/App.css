@@ -281,7 +281,7 @@
 
 .section1{
   display: flex;
-  /* border:1px solid black; */
+  border:1px solid black;
   width: 100%;
   justify-content: space-between;
 }
@@ -329,7 +329,7 @@
 .containerInfoItinerary{
   padding: 1rem;
   width: 100%;
-  /* border:1px solid yellow; */
+  border:1px solid yellow;
 }
 
 
@@ -337,7 +337,7 @@
 .containerDataAuthor{
   display: flex;
   align-items: center;
-  /* border:1px solid black; */
+  border:1px solid black;
   height: 9rem;
 }
 
@@ -345,6 +345,10 @@
   margin-left: 1rem;
 }
 
+.logoExploring{
+  display: flex;
+  justify-content: center;
+}
 
 /* footer */
 
@@ -417,6 +421,19 @@ footer .navegation a:hover {
     margin-bottom: 29rem;
   }
 
+  .containerItinerary{
+    /* border: 1px solid black; */
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imgItinerary{
+  
+    width: 60rem;
+    border-radius: 5px;
+  }
 
   /* footer */
 
@@ -523,11 +540,10 @@ footer .navegation a:hover {
   /* city */
 
   .containerCity {
-    /* border: 1px solid black; */
+    border: 1px solid yellow;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-evenly; */
-    /* align-items: center; */
+    /* width: 40rem; */
   }
 
   .containerCityInfo {
@@ -545,9 +561,27 @@ footer .navegation a:hover {
     
   }
 
+  .containerItinerary{
+    /* border: 1px solid black; */
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .divButtonCity{
     margin-top: 2rem;
     margin-bottom: 9rem;
+  }
+
+  .imgCity {
+    width: 35rem;
+  }
+
+  .imgItinerary{
+  
+    width: 35rem;
+    border-radius: 5px;
   }
 
   /* footer */
@@ -586,9 +620,9 @@ footer .navegation a:hover {
 }
 
 @media only screen and (min-width: 300px) and (max-width: 600px) {
-  /* Navbar */
+   /* Navbar */
 
-  .menuH {
+   .menuH {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -657,9 +691,10 @@ footer .navegation a:hover {
   /* City */
 
   .containerCity {
-    /* border: 1px solid black; */
+    border: 1px solid yellow;
     display: flex;
     flex-direction: column;
+    width: 100%;
     /* justify-content: space-evenly; */
     /* align-items: center; */
   }
@@ -685,9 +720,24 @@ footer .navegation a:hover {
   }
 
   .imgCity {
-    width: 20rem;
+    width: 21rem;
+    border-radius: 5px;
   }
 
+  .imgItinerary{
+  
+    width: 21rem;
+    border-radius: 5px;
+  }
+
+  .containerItinerary{
+    width: 100%;
+  }
+
+  .section1{
+    display: flex;
+    flex-direction: column-reverse;
+  }
 
   .divButtonCity{
     margin-top: 2rem;

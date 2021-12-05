@@ -67,7 +67,7 @@ class City extends React.Component {
                                         </div>
                                         <h3>{ite.nameAuthor}</h3>
                                     </div>
-                                    <div>
+                                    <div className="logoExploring">
                                         <img key={this.path} className="imgLogoExploring" alt={this.title} src="/assets/logo-exploradores.png" />
                                     </div>
                                 </div>
