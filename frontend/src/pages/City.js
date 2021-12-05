@@ -29,7 +29,6 @@ class City extends React.Component {
 
     render() {
 
-        console.log(this.props.listaItinerary)
 
         window.scrollTo(0, 0);
 
@@ -38,75 +37,75 @@ class City extends React.Component {
 
             <>
                 <Nav />
-                <h1 className="titleCity">{this.title} {this.country}</h1>
-                <div className="containerCity">
-                    <div className="containerCityInfo">
+                <h1  className="titleCity">{this.title} {this.country}</h1>
+                <div   className="containerCity">
+                    <div   className="containerCityInfo">
 
-                        <h3>Currency: {this.currency}</h3>
-                        <h3>Language: {this.language}</h3>
+                        <h3 >Currency: {this.currency}</h3>
+                        <h3 >Language: {this.language}</h3>
 
 
                     </div>
-                    <div className="containerImgCity">
-                        <img key={this.path} className="imgCity" alt={this.title} src={`/assets/${this.path}`} />
+                    <div  className="containerImgCity">
+                        <img  className="imgCity" alt={this.title} src={`/assets/${this.path}`} />
                     </div>
 
                 </div>
                 {this.props.listaItinerary.length > 0 ? this.props.listaItinerary.map((ite) => {
                     return (
-                        <div className="containerItinerary">
-                            <div className="containerImgItinerary">
-                                <img key={this.path} className="imgItinerary" alt={this.title} src={`/assets/${ite.imageItinerary}`} />
+                        <div  key={ite._id} className="containerItinerary">
+                            <div key ={'containerImgItinerary'}  className="containerImgItinerary">
+                                <img  className="imgItinerary" key={ite.imageItinerary} alt={this.title} src={`/assets/${ite.imageItinerary}`} />
                             </div>
-                            <div className="containerInfoItinerary">
+                            <div key={'nose1'} className="containerInfoItinerary">
 
-                                <div className="section1">
-                                    <div className="containerDataAuthor">
-                                        <div className="nameAuthor">
-                                            <img key={this.path} className="imgAuthor" alt={this.title} src={`/assets/${ite.imageAuthor}`} />
+                                <div key={'nose2'} className="section1">
+                                    <div key={'nose3'} className="containerDataAuthor">
+                                        <div key={'nose4'} className="nameAuthor">
+                                            <img  className="imgAuthor" key={ite.imageAuthor} alt={this.title} src={`/assets/${ite.imageAuthor}`} />
                                         </div>
-                                        <h3>{ite.nameAuthor}</h3>
+                                        <h3 key={ite.nameAuthor}>{ite.nameAuthor}</h3>
                                     </div>
-                                    <div className="logoExploring">
-                                        <img key={this.path} className="imgLogoExploring" alt={this.title} src="/assets/logo-exploradores.png" />
+                                    <div key={'nose5'} className="logoExploring">
+                                        <img  className="imgLogoExploring" key={this.title} alt={this.title} src="/assets/logo-exploradores.png" />
                                     </div>
                                 </div>
 
-                                <div className="section2">
-                                    <h3>
-                                        {ite.title} <span> ❤ {ite.like}</span>
+                                <div key={'nose5'} className="section2">
+                                    <h3 key={ite.title}>
+                                        {ite.title} <span key={ite.like}> ❤ {ite.like}</span>
                                     </h3>
-                                    <p>
+                                    <p key={ite.description}>
                                         {ite.description}
                                     </p>
 
                                 </div>
 
-                                <div className="section3">
-                                    <Link to="/cities" className="ms-3">{ite.hashtags}</Link>
+                                <div key={'nose6'} className="section3">
+                                    <Link to="/cities" key={ite.hashtags} className="ms-3">{ite.hashtags}</Link>
 
                                 </div>
 
-                                <div>
-                                    <span className="ms-3">
+                                <div key={'nose7'} >
+                                    <span key={ite.hours} className="ms-3">
                                         {ite.hours} {ite.price}
                                     </span>
                                 </div>
 
 
-                                <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button key={'view more'} type="button"  className="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     view more
                                 </button>
 
 
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-body">
-                                                <h3 className="text-center">Under construction</h3>
+                                <div key={'nose8'} className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div key={'nose9'} className="modal-dialog">
+                                        <div key={'nose10'} className="modal-content">
+                                            <div key={'nose11'}  className="modal-body">
+                                                <h3 key={'under'}  className="text-center">Under construction</h3>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <div key={'nose12'} className="modal-footer">
+                                                 <button key={'close'}  type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             </div>
                                         </div>
                                     </div>
@@ -116,16 +115,16 @@ class City extends React.Component {
 
                         </div>
                     )
-                }) : <div className="containerEmpty">
-                    <div className="ayudaa">
-                        <h1>No itinerary found</h1>
+                }) : <div  className="containerEmpty">
+                    <div  className="ayudaa">
+                        <h1 key={'No itinerary found'}>No itinerary found</h1>
                     </div>
 
                 </div>}
 
 
-                <div className="divButtonCity">
-                    <Link to="/cities" className="buttonCity">Back to cities</Link>
+                <div   className="divButtonCity">
+                    <Link key={'back'} to="/cities" className="buttonCity">Back to cities</Link>
                 </div>
 
                 <Footer />

@@ -33,40 +33,51 @@ const itineraryControllers = {
         res.json({ response: itineraries, success: true })
     },
 
+    getAItinerary: async (req, res) => {
+        let itinerary
+        const id = req.params.id
+        try {
+            itinerary = await Itinerarymodel.findOne({ _id: id })
+        } catch (error) {
+            console.log(error)
+        }
+        res.json({ response: itinerary, success: true })
+    },
+
     postItinerary: (req, res) => {
 
         const itineraries = new Itinerarymodel( req.body ).save()
         .then((response) => res.json({ response }))
 
-    }
-    // updateGalery: async (req, res) => {
+    },
+    updateItinerary: async (req, res) => {
 
-    //     let id = req.params.id
-    //     let city = req.body
-    //     let actualizado
-    //     console.log(city)
-    //     try {
-    //         actualizado = await Citymodel.findOneAndUpdate({ _id: id }, city, { new: true })
-    //         console.log(actualizado)
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    //     res.json({ success: actualizado ? true : false })
+        let id = req.params.id
+        let itinerary = req.body
+        let actualizado
+        console.log(itinerary)
+        try {
+            actualizado = await Itinerarymodel.findOneAndUpdate({ _id: id }, itinerary, { new: true })
+            console.log(actualizado)
+        } catch (error) {
+            console.log(error)
+        }
+        res.json({ success: actualizado ? true : false })
 
-    // },
-    // deleteGalery: async(req,res)=>{
-    //     const id = req.params.id
-    //     let city
-    //     try{
-    //         await Citymodel.findOneAndDelete({_id:id})
-    //         city = await Citymodel.find()
+    },
+    deleteItinerary: async(req,res)=>{
+        const id = req.params.id
+        let itinerary
+        try{
+            await Itinerarymodel.findOneAndDelete({_id:id})
+            itinerary = await Itinerarymodel.find()
 
-    //     }catch(error){
-    //         console.log(error)
-    //     }
+        }catch(error){
+            console.log(error)
+        }
 
-    //     res.json({response: city , success:true})
-    // },
+        res.json({response: itinerary , success:true})
+    },
 
 }
 
