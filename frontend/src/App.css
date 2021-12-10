@@ -353,6 +353,29 @@
   justify-content: center;
 }
 
+/* Sign Up */
+
+
+
+.form{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 25rem;
+  height: 100%;
+  margin: 0 auto;
+  
+}
+
+.form span, input, select{
+  width: 100%;
+  border: 1px solid black;
+} 
+
+.form input,select{
+  text-align: center;
+}
+
 /* footer */
 
 footer {
