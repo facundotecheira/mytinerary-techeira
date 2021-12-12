@@ -57,17 +57,17 @@ const userControllers = {
         console.log(req.body)
         try {
             const usuarioExiste = await Usersmodel.findOne({email})
-            const name = usuarioExiste.firstName;
+            
             if (!usuarioExiste){
-                res.json({success: true, error:"El usuario y/o contraseña incorrectos"})
+                res.json({success: true, error:"El correo no existe"})
             }else{
                 let contraseñaCoincide = bcryptjs.compareSync(password, usuarioExiste.password)
                 if (contraseñaCoincide) {
                     const token = jwt.sign({...usuarioExiste}, process.env.SECRETKEY)
-                    return res.json({success: true, response: {token,...usuarioExiste} ,error:null})
-                    // return res.json({success: true, error:"te has logeado correctamente"})
+                    res.json({success: true, response: {token,...usuarioExiste} ,error:null})
+                    // res.json({success: true, error:"te has logeado correctamente"})
                 }else{
-                    res.json({success: true, error:"El usuario y/o contraseña incorrectos"})
+                    res.json({success: true, error:"La contraseña es incorrecta"})
                 }
             }
 

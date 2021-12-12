@@ -9,12 +9,12 @@ const userAction = {
                 const user = await axios.post('http://localhost:4000/api/auth/signUp' ,{firstName,lastName,email,password,url,country})
                 if(user.data.success && !user.data.error){
                     localStorage.setItem('token',user.data.response.token)
-                     dispatch({type:'USER', payload: firstName})
-                     return {errores: [{message:'Usuario registrado correctamente'}]}
+                    dispatch({type:'USER', payload: user.data.response._doc})
+                     return {errores: [{message: 'Usuario registrado correctamente'}]}
                 }else{
                     
                     // console.log(user.data.response)
-                    return {errores: [{message:user.data.error}]}
+                    return {errores: [{message: user.data.error}]}
                 }
             }catch(error){
                 
@@ -28,9 +28,11 @@ const userAction = {
                 if(user.data.success && !user.data.error){
                     localStorage.setItem('token',user.data.response.token)
                     dispatch({type:'USER', payload: user.data.response._doc})
-     
+                    return {errores: []}
                 }else{
-                    console.log(user.data)
+                    console.log('toy aca',user.data)
+                    return {errores: [{message: user.data.error}]}
+                    
                     
                 }
             }catch(error){

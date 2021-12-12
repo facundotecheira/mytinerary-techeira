@@ -39,19 +39,18 @@ const Nav = (props) => {
               </li>
 
 
-
-
-
-
-
             </ul>
 
             <ul className="navbar-nav containeruser mb-2 mb-lg-0">
 
+                
+
               <li className="nav-item dropdown ">
 
                 <a className="nav-link dropdown-toggle" href="#s" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img className="imguser" src="/assets/person-circle.svg" alt="usericon"></img>
+                
+                {props.usuario.firstName}
+                  <img className="imguser ms-4" src="/assets/person-circle.svg" alt="usericon"></img>
                 </a>
 
                 <ul className="dropdown-menu menuUser" aria-labelledby="navbarDropdown">

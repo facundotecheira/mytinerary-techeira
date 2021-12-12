@@ -17,7 +17,7 @@ import { Navigate } from 'react-router-dom';
     
 
     render() {
-
+        
         if (this.props.usuario._id) {
             return <Navigate to = '/'/>
         }
@@ -26,12 +26,19 @@ import { Navigate } from 'react-router-dom';
             const errores = await this.props.registerUser(firstName,lastName,email,password,url,country)
             console.log(errores)
             if (errores.errores) {
-                errores.errores.map(e=> alert(e.message.length >6 ? e.message : e.message.join('\n')) )
+                errores.errores.map((e)=>{
+                    return (
+                        <div>
+                            {e.message.length >6 ? e.message : e.message.join('\n')}
+                        </div>
+                    )
+                })
             }
+            
         }
 
-        
-        // .length >6 ? e.message : e.message.join('\n')
+        // e.message.length >6 ? e.message : e.message.join('\n')
+
 
         return (
             <>

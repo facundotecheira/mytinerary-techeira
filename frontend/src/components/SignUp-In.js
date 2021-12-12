@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import countrysAction from '../redux/actions/countrysAction'
 import { connect } from "react-redux";
 import { useRef } from 'react'
-import { use } from 'passport';
+// import { use } from 'passport';
 
 const SignUpIn = (props) => {
   const { handleSubmit } = props;
@@ -35,7 +35,9 @@ const SignUpIn = (props) => {
           inputEmail.current.value = '',
           inputPassword.current.value = '',
           inputUrl.current.value = '',
-          inputCountry.current.value = '') : console.log('')
+          inputCountry.current.value = '',
+        
+          ) : console.log('')
 
 
     ) : handleSubmit(inputEmail.current.value, inputPassword.current.value) ?
