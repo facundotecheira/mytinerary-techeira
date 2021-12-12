@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import userAction from '../redux/actions/userAction';
 
-const Nav = () => {
+const Nav = (props) => {
+
   return (
 
     <div>
@@ -17,18 +20,28 @@ const Nav = () => {
 
             <ul className="navbar-nav me-auto menuHC ">
 
+
               <li className="nav-item">
-                
+
                 <Link to="/" className="nav-link active" aria-current="page">
                   Home
+
                 </Link>
 
               </li>
+
+
+
               <li className="nav-item">
                 <Link to="/cities" className="nav-link active">
                   Cities
                 </Link>
               </li>
+
+
+
+
+
 
 
             </ul>
@@ -42,17 +55,39 @@ const Nav = () => {
                 </a>
 
                 <ul className="dropdown-menu menuUser" aria-labelledby="navbarDropdown">
-                  <li>
-                    <Link to="/signin" className="dropdown-item">
-                      Sign in
-                    </Link>
-                  </li>
 
-                  <li>
-                    <Link to="/signup" className="dropdown-item">
-                      Sign up
-                    </Link>
-                  </li>
+
+                  {!props.usuario.firstName && (
+                    <li>
+                      <Link to="/signin" className="dropdown-item">
+                        Sign in
+
+                      </Link>
+                    </li>
+                  )}
+
+                  {!props.usuario.firstName && (
+                    <li>
+                      <Link to="/signup" className="dropdown-item">
+                        Sign up
+                      </Link>
+                    </li>
+                  )}
+
+                  {props.usuario.firstName && (
+
+                    <li>
+                      <Link to="/" className="dropdown-item">
+                        <p onClick={()=> props.cerrarSesion()}> Sign out</p>
+                      </Link>
+                    </li>
+
+                  )}
+
+
+
+
+
                 </ul>
               </li>
 
@@ -71,4 +106,17 @@ const Nav = () => {
   )
 }
 
-export default Nav
+const mapStateToProps = (state) => {
+
+  return {
+
+    usuario: state.user.usuario
+
+  }
+}
+
+const mapDispatchToProps = {
+  cerrarSesion: userAction.cerrarSesion
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Nav)

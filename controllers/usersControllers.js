@@ -1,8 +1,8 @@
-const Persona = require('../models/Persona')
+const Usersmodel = require('../models/Usersmodel')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const authControllers = {
+const userControllers = {
 
     // + al momento de registrar usuarios en nuestra aplicación, 
     // + hay situaciones que tenemos tener en cuenta  
@@ -13,48 +13,59 @@ const authControllers = {
     // - 3) validacion de datos
 
 
-    nuevoUsuario: async(req, res) => {
+    newUser: async(req, res) => {
         
-        let { userName, password } = req.body      
+        let { firstName,lastName,email,password,url,country } = req.body      
         // tengo que hashear (hash) la contraseña y guardarla en la base de datos
-        console.log(req.body)
+        // console.log(req.body)
         try {
 
-            const usuarioExiste = await Persona.findOne({userName})
+            const usuarioExiste = await Usersmodel.findOne({email})
             if (usuarioExiste){
-                res.json({success: false, error:"El nombre de usuario ya esta en uso", response:null})
+                return res.json({success: false, error:"El usuario ya existe"})
             }else{
 
                 const contraseñaHasheada = bcryptjs.hashSync(password, 10)
 
-                const nuevoUsuario = new Persona({
-                    userName, 
-                    password:contraseñaHasheada
+                const nuevoUsuario = new Usersmodel({
+                    firstName,
+                    password:contraseñaHasheada,
+                    lastName,
+                    email,
+                    url,
+                    country
+                    
                 })
 
-                const token = jwt.sign({...nuevoUsuario}, process.env.SECRET_KEY)
                 await nuevoUsuario.save()
-                res.json({success: true, response: {token,nuevoUsuario}, error: null})
+                const token = jwt.sign({...nuevoUsuario}, process.env.SECRETKEY)
+                return res.json({success: true, response: {token,...nuevoUsuario}, error: null})
+                // return res.json({success: true, error:"te has registrado correctamente"})
+                
             }
         
         }catch(error){
+            console.log('estoy aca',process.env.SECRETKEY,error)
             res.json({success: false, response: null, error: error})
         }
 
         
     },
-    accederACuenta: async(req, res)=>{
-        const { userName, password } = req.body
+
+    userLoged: async(req, res)=>{
+        const { email, password } = req.body
         console.log(req.body)
         try {
-            const usuarioExiste = await Persona.findOne({userName})
+            const usuarioExiste = await Usersmodel.findOne({email})
+            const name = usuarioExiste.firstName;
             if (!usuarioExiste){
                 res.json({success: true, error:"El usuario y/o contraseña incorrectos"})
             }else{
                 let contraseñaCoincide = bcryptjs.compareSync(password, usuarioExiste.password)
                 if (contraseñaCoincide) {
-                    const token = jwt.sign({...usuarioExiste}, process.env.SECRET_KEY)
-                    res.json({success:true, response:{token,userName} ,error:null})
+                    const token = jwt.sign({...usuarioExiste}, process.env.SECRETKEY)
+                    return res.json({success: true, response: {token,...usuarioExiste} ,error:null})
+                    // return res.json({success: true, error:"te has logeado correctamente"})
                 }else{
                     res.json({success: true, error:"El usuario y/o contraseña incorrectos"})
                 }
@@ -69,4 +80,4 @@ const authControllers = {
 
 }
 
-module.exports = authControllers;
+module.exports = userControllers;
