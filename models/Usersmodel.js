@@ -7,6 +7,7 @@ const usersSchema = new mongoose.Schema({
     email: {type:String, required:true},
     url: {type:String, required:true},
     country: {type:String, required:true},
+    google: {type: Boolean, default: false}
     
     
 })

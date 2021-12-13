@@ -360,7 +360,7 @@
 .form{
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  /* border: 1px solid yellow; */
   width: 25rem;
   height: 100%;
   margin: 0 auto;
@@ -369,11 +369,28 @@
 
 .form span, input, select{
   width: 100%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 } 
 
 .form input,select{
   text-align: center;
+}
+
+.google{
+  border: 1px solid black;
+  margin: 0 auto;
+  width: 12rem;
+}
+
+/* signout */
+.signout-link{
+  /* border: 1px solid black; */
+  height: 3rem;
+}
+.signout{
+  /* border: 1px solid black; */
+  width: 100%;
+  height: 3rem;
 }
 
 /* footer */

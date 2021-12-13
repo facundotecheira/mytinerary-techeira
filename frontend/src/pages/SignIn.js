@@ -12,11 +12,14 @@ class SignIn extends React.Component {
         super(props)
     }
 
-    param = this.props.params.param
+    // param = this.props.params.param
+    navigate = this.props.location.pathname
 
     render() {
 
-        if (this.props.usuario._id) {
+        const nombre = localStorage.getItem('firstName');
+
+        if (nombre) {
             return <Navigate to='/' />
         }
 
@@ -37,7 +40,7 @@ class SignIn extends React.Component {
         return (
             <>
                 <Nav />
-                <SignUpIn handleSubmit={handleSubmit} param={this.param} />
+                <SignUpIn handleSubmit={handleSubmit} param={this.navigate} />
 
             </>
         )

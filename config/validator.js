@@ -21,11 +21,13 @@ const validator = (req, res, next) => {
 
         password: joi.string().trim().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required().messages({
             'string.pattern.base':'the password must contain only numbers or letters',
-            'string.empty':'the email must not be empty'
+            'string.empty':'the password must not be empty'
         }),
         url: joi.string().required().messages({'string.empty':'the url cannot be empty'}),
 
-        country: joi.string().required().messages({'string.empty':'the country cannot be empty '})
+        country: joi.string().required().messages({'string.empty':'the country cannot be empty '}),
+
+        google: joi.boolean(),
 
         
     

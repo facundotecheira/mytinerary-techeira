@@ -19,7 +19,9 @@ class SignUP extends React.Component {
 
     render() {
 
-        if (this.props.usuario._id) {
+        const nombre = localStorage.getItem('firstName');
+
+        if (nombre) {
             return <Navigate to='/' />
         }
 
@@ -28,7 +30,7 @@ class SignUP extends React.Component {
             console.log(errores)
             if (errores.errores) {
                 errores.errores.map((e) => {
-                    toasty('error', e.message.length > 6 ? e.message : e.message.join('\n'))
+                     e.message.length > 6 ? toasty('success', e.message) :toasty('error', e.message.join('\n'))
                 })
             }
 

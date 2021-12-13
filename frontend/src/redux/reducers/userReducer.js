@@ -10,8 +10,10 @@ const userReducer = (state = {usuario:''} , action) => {
              }
         case 'LOG_OUT_USER':
             localStorage.removeItem('token')
+            localStorage.removeItem('firstName')
+            localStorage.removeItem('url')
             return{
-                usuario:''
+                usuario:null
             }  
          default:
              return state

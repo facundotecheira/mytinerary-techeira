@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom';
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import userAction from '../redux/actions/userAction';
 
 const Nav = (props) => {
 
+  const nombre = localStorage.getItem('firstName');
+  const imagen = localStorage.getItem('url');
+  // const escuchando = props.usuario
   return (
-
+    
     <div>
+      {/* {props.usuario.firstName} */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <Link to='/' className="navbar-brand">
@@ -30,7 +34,7 @@ const Nav = (props) => {
 
               </li>
 
-
+          
 
               <li className="nav-item">
                 <Link to="/cities" className="nav-link active">
@@ -47,16 +51,19 @@ const Nav = (props) => {
 
               <li className="nav-item dropdown ">
 
-                <a className="nav-link dropdown-toggle" href="#s" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          
+                <a className="nav-link dropdown-toggle d-flex justify-content-center align-items-center" href="#s" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {nombre?<p>Welcome! {nombre}</p>:''}
+                {imagen?<img className="imguser ms-4" src={imagen} alt="usericon"></img>:
                 
-                {props.usuario.firstName}
-                  <img className="imguser ms-4" src="/assets/person-circle.svg" alt="usericon"></img>
+                <img className="imguser" src="/assets/person-circle.svg" alt="usericon"></img>}
+            
                 </a>
-
+              
                 <ul className="dropdown-menu menuUser" aria-labelledby="navbarDropdown">
 
 
-                  {!props.usuario.firstName && (
+                  {!nombre && (
                     <li>
                       <Link to="/signin" className="dropdown-item">
                         Sign in
@@ -65,7 +72,7 @@ const Nav = (props) => {
                     </li>
                   )}
 
-                  {!props.usuario.firstName && (
+                  {!nombre && (
                     <li>
                       <Link to="/signup" className="dropdown-item">
                         Sign up
@@ -73,11 +80,11 @@ const Nav = (props) => {
                     </li>
                   )}
 
-                  {props.usuario.firstName && (
+                  {nombre && (
 
-                    <li>
-                      <Link to="/" className="dropdown-item">
-                        <p onClick={()=> props.cerrarSesion()}> Sign out</p>
+                    <li >
+                      <Link to="/" className="dropdown-item signout-link ">
+                        <p className='signout' onClick={()=> props.cerrarSesion()}> Sign out</p>
                       </Link>
                     </li>
 
@@ -106,11 +113,9 @@ const Nav = (props) => {
 }
 
 const mapStateToProps = (state) => {
-
   return {
 
-    usuario: state.user.usuario
-
+      usuario: state.user.usuario
   }
 }
 
