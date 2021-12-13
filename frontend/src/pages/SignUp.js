@@ -1,40 +1,37 @@
 import React from 'react'
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import userAction from '../redux/actions/userAction'
 import SignUpIn from '../components/SignUp-In'
 import Nav from '../components/Nav';
 import { Navigate } from 'react-router-dom';
- class SignUP extends React.Component {
+import toasty from "../components/Toast"
+class SignUP extends React.Component {
 
     constructor(props) {
         super(props)
     }
 
-    
+
 
     navigate = this.props.location.pathname
 
-    
+
 
     render() {
-        
+
         if (this.props.usuario._id) {
-            return <Navigate to = '/'/>
+            return <Navigate to='/' />
         }
 
-        const handleSubmit = async (firstName,lastName,email,password,url,country)=>{
-            const errores = await this.props.registerUser(firstName,lastName,email,password,url,country)
+        const handleSubmit = async (firstName, lastName, email, password, url, country) => {
+            const errores = await this.props.registerUser(firstName, lastName, email, password, url, country)
             console.log(errores)
             if (errores.errores) {
-                errores.errores.map((e)=>{
-                    return (
-                        <div>
-                            {e.message.length >6 ? e.message : e.message.join('\n')}
-                        </div>
-                    )
+                errores.errores.map((e) => {
+                    toasty('error', e.message.length > 6 ? e.message : e.message.join('\n'))
                 })
             }
-            
+
         }
 
         // e.message.length >6 ? e.message : e.message.join('\n')
@@ -44,7 +41,7 @@ import { Navigate } from 'react-router-dom';
             <>
                 <Nav />
                 <SignUpIn handleSubmit={handleSubmit} param={this.navigate} />
-             
+
             </>
         )
     }
@@ -54,14 +51,14 @@ import { Navigate } from 'react-router-dom';
 const mapStateToProps = (state) => {
 
     return {
-  
-      usuario: state.user.usuario
-  
+
+        usuario: state.user.usuario
+
     }
-  }
-  
- const mapDispatchToProps = {
+}
+
+const mapDispatchToProps = {
     registerUser: userAction.registrarUsuario
- }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUP)
