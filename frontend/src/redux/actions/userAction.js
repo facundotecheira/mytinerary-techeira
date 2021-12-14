@@ -12,7 +12,7 @@ const userAction = {
                     localStorage.setItem('firstName', user.data.response._doc.firstName)
                     localStorage.setItem('url', user.data.response._doc.url)
                     dispatch({type:'USER', payload: user.data.response._doc})
-                     return {errores: [{message: 'Usuario registrado correctamente'}]}
+                     return {errores: [{message: 'User successfully registered'}]}
                 }else{
                     
                     // console.log(user.data.response)

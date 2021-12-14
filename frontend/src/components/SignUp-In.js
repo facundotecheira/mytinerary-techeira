@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { useRef } from "react";
 import userAction from "../redux/actions/userAction";
 import GoogleLogin from 'react-google-login';
+import { Link } from 'react-router-dom';
 
 const SignUpIn = (props) => {
 
@@ -35,7 +36,7 @@ const SignUpIn = (props) => {
       country: 'Argentina',
       google: true
     }
-    
+
     props.handleSubmit(googleUser.firstName,
       googleUser.lastName,
       googleUser.email,
@@ -56,7 +57,7 @@ const SignUpIn = (props) => {
       password: res.profileObj.googleId,
       google: true,
     }
-    props.handleSubmit(googleUser.email,googleUser.password, googleUser.google)
+    props.handleSubmit(googleUser.email, googleUser.password, googleUser.google)
   }
 
 
@@ -75,7 +76,7 @@ const SignUpIn = (props) => {
         inputPassword.current.value,
         inputUrl.current.value,
         inputCountry.current.value,
-        
+
       )
         ? clear(
           (inputFirstName.current.value = ""),
@@ -102,13 +103,13 @@ const SignUpIn = (props) => {
     <>
       {navigate == "/signup" ? (
         <div className="formContainer">
-          <h2 className="text-center">Register to start the adventure</h2>
+          <h2 className="text-center titleForm">Register to start the adventure</h2>
           <form className="form" onSubmit={handleSubmitInputs}>
             <span> <input ref={inputFirstName} type="text" placeholder="First name" /> </span>
             <span><input ref={inputLastName} type="text" placeholder="Last name" /></span>
             <span><input ref={inputEmail} type="email" name="" id="" placeholder="Email" /></span>
-            <span><input ref={inputPassword} type="password" placeholder="Password"/></span>
-            <span><input ref={inputUrl} type="text" placeholder="Url profile picture"/></span>
+            <span><input ref={inputPassword} type="password" placeholder="Password" /></span>
+            <span><input ref={inputUrl} type="text" placeholder="Url profile picture" /></span>
             <span>
               <select ref={inputCountry} name="country" id="">
                 <option value="">Select your Country</option>
@@ -117,7 +118,11 @@ const SignUpIn = (props) => {
                 })}
               </select>
             </span>
-            <input type="submit" value="Create account"></input>
+            <input className="formSubmit" type="submit" value="Create account"></input>
+            <Link to="/signin" className="">
+             Do you already have an account
+
+            </Link>
           </form>
           <div className="google">
             <GoogleLogin
@@ -132,11 +137,15 @@ const SignUpIn = (props) => {
         </div>
       ) : (
         <div className="formContainer">
-          <h2 className="text-center">Welcome back</h2>
+          <h2 className="text-center titleForm">Welcome back</h2>
           <form className="form" onSubmit={handleSubmitInputs}>
-            <span><input ref={inputEmail} type="email" name="" id="" placeholder="Email"/></span>
-            <span><input ref={inputPassword} type="password" placeholder="Password"/></span>
-            <input type="submit" value="Sign In"></input>
+            <span><input ref={inputEmail} type="email" name="" id="" placeholder="Email" /></span>
+            <span><input ref={inputPassword} type="password" placeholder="Password" /></span>
+            <input className="formSubmit" type="submit" value="Sign In"></input>
+            <Link to="/signup" className="">
+            Don't have an account 
+
+            </Link>
           </form>
           <div className="google">
             <GoogleLogin

@@ -30,13 +30,19 @@ class SignUP extends React.Component {
             console.log(errores)
             if (errores.errores) {
                 errores.errores.map((e) => {
-                     e.message.length > 6 ? toasty('success', e.message) :toasty('error', e.message.join('\n'))
+                    if (e.message == 'The user already exists') {
+                        toasty('error', e.message)
+                    } else {
+
+                        e.message.length > 6 ? toasty('success', e.message) : toasty('error', e.message.join('\n'))
+                    }
+
                 })
             }
 
         }
 
-        // e.message.length >6 ? e.message : e.message.join('\n')
+       
 
 
         return (

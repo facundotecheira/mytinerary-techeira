@@ -17,12 +17,12 @@ const userControllers = {
         
         let { firstName,lastName,email,password,url,country,google } = req.body      
         // tengo que hashear (hash) la contraseña y guardarla en la base de datos
-        // console.log(req.body)
+ 
         try {
 
             const usuarioExiste = await Usersmodel.findOne({email})
             if (usuarioExiste){
-                return res.json({success: false, error:"El usuario ya existe"})
+                return res.json({success: false, error:"The user already exists"})
             }else{
 
                 const contraseñaHasheada = bcryptjs.hashSync(password, 10)
@@ -56,24 +56,24 @@ const userControllers = {
     userLoged: async(req, res)=>{
         const { email, password,google } = req.body
         if (email == '' || password == ''){
-            return res.json({success: true, error:"Los campos no pueden quedar vacios"})
+            return res.json({success: true, error:"Fields cannot be left empty"})
         }
         console.log(req.body)
         try {
             const usuarioExiste = await Usersmodel.findOne({email})
-            if (usuarioExiste.google && !google){
-                res.json({success: true, error:"Invalid email"})
-            }
+            // if (usuarioExiste.google && !google){
+            //      res.json({success: true, error:"Invalid email"})
+            // }
             if (!usuarioExiste){
-                res.json({success: true, error:"El correo no existe"})
+                res.json({success: true, error:"Mail does not exist"})
             }else{
                 let contraseñaCoincide = bcryptjs.compareSync(password, usuarioExiste.password)
                 if (contraseñaCoincide) {
                     const token = jwt.sign({...usuarioExiste}, process.env.SECRETKEY)
                     res.json({success: true, response: {token,...usuarioExiste} ,error:null})
-                    // res.json({success: true, error:"te has logeado correctamente"})
+                   
                 }else{
-                    res.json({success: true, error:"La contraseña es incorrecta"})
+                    res.json({success: true, error:"The password is incorrect"})
                 }
             }
 

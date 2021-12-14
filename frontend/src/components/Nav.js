@@ -6,7 +6,7 @@ const Nav = (props) => {
 
   const nombre = localStorage.getItem('firstName');
   const imagen = localStorage.getItem('url');
-  // const escuchando = props.usuario
+  const escuchando = props.usuario
   return (
     
     <div>

@@ -353,7 +353,7 @@
   justify-content: center;
 }
 
-/* Sign Up */
+/* Form */
 
 
 
@@ -361,25 +361,51 @@
   display: flex;
   flex-direction: column;
   /* border: 1px solid yellow; */
-  width: 25rem;
+  width: 50%;
   height: 100%;
   margin: 0 auto;
   
 }
 
+.titleForm{
+  font-family: "Petemoss", "cursive";
+  font-size: 13vmin;
+}
+
 .form span, input, select{
   width: 100%;
-  /* border: 1px solid black; */
+  height: 3rem;
+  border-radius: 25px;
+  margin-bottom: .3rem;
+  border: 1px solid black;
 } 
 
 .form input,select{
   text-align: center;
 }
 
+.formSubmit{
+  background-color: black;
+  color: white;
+}
+
+.formSubmit:hover{
+
+  background-color: white;
+  color: black;
+  width: 90%;
+  margin: 0 auto;
+
+}
+
 .google{
   border: 1px solid black;
   margin: 0 auto;
   width: 12rem;
+  margin-top: .3rem;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 /* signout */
