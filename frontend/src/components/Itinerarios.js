@@ -41,16 +41,16 @@ const Itinerarios = ({ ite }) => {
 
                 <div key={'section4'} >
                     <span  className="ms-3">
-                        {ite.hours} {ite.price}
+                        {ite.hours}    Price: {ite.price}
                     </span>
                 </div>
 
 
-                {display && <div className="actividad">
-                    <h3>Under construction</h3>
+                {display && <div className="mt-3">
+                    <h3 className='text-center'>Under construction</h3>
 
                 </div>}
-                <button className="actividades" onClick={HandleDisplay}> {display ? "view less" : "view more"}</button>
+                <button className='btn btn-outline-primary mt-4' onClick={HandleDisplay}> {display ? "view less" : "view more"}</button>
             </div>
                
 

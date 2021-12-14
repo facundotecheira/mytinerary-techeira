@@ -16,6 +16,7 @@ const Nav = (props) => {
           <Link to='/' className="navbar-brand">
             <img className="iconbrand" src="/assets/logo3.png" alt="iconbrand"></img>
           </Link>
+          
 
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -44,6 +45,11 @@ const Nav = (props) => {
 
 
             </ul>
+            
+
+            <div className='d-flex align-items-center'>
+
+            {nombre?<p className='mt-3'>Welcome! {nombre}</p>:''}
 
             <ul className="navbar-nav containeruser mb-2 mb-lg-0">
 
@@ -52,9 +58,9 @@ const Nav = (props) => {
               <li className="nav-item dropdown ">
 
           
-                <a className="nav-link dropdown-toggle d-flex justify-content-center align-items-center" href="#s" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {nombre?<p>Welcome! {nombre}</p>:''}
-                {imagen?<img className="imguser ms-4" src={imagen} alt="usericon"></img>:
+                <a className="nav-link dropdown-toggle " href="#s" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              
+                {imagen?<img className="imguser ms-4 mt-2" src={imagen} alt="usericon"></img>:
                 
                 <img className="imguser" src="/assets/person-circle.svg" alt="usericon"></img>}
             
@@ -98,6 +104,7 @@ const Nav = (props) => {
               </li>
 
             </ul>
+            </div>
           </div>
         </div>
       </nav>

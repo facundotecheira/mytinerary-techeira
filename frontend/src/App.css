@@ -4,6 +4,7 @@
 
 .imguser {
   width: 2.5rem;
+  border-radius: 25px;
 }
 
 .containeruser {
@@ -560,6 +561,7 @@ footer .navegation a:hover {
 
   .imguser {
     width: 2rem;
+    border-radius: 25px;
   }
 
   /* carousel */
@@ -653,6 +655,12 @@ footer .navegation a:hover {
     border-radius: 5px;
   }
 
+  /* activities */
+
+ #buttonActiviti{
+  background: linear-gradient(328deg, rgb(142, 142, 212) 0%,  rgb(49, 97, 202) 70%);
+ }
+
   /* footer */
 
   footer {
@@ -709,6 +717,7 @@ footer .navegation a:hover {
 
   .imguser {
     width: 2rem;
+    border-radius: 25px;
   }
 
   /* Carrucel */
