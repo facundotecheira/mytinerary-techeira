@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const SignUpIn = (props) => {
 
-
+let niIdea = 0;
 
   const { handleSubmit } = props;
 
@@ -114,7 +114,7 @@ const SignUpIn = (props) => {
               <select ref={inputCountry} name="country" id="">
                 <option value="">Select your Country</option>
                 {props.conuntries.map((pais) => {
-                  return <option value={pais.country}>{pais.country}</option>;
+                  return <option key={pais.country == "Botswana"? niIdea ++:pais.country} value={pais.country}>{pais.country}</option>;
                 })}
               </select>
             </span>

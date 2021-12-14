@@ -54,7 +54,7 @@ class City extends React.Component {
                 {this.props.listaItinerary.length > 0 ? this.props.listaItinerary.map((ite) => {
                     return (
 
-                        <Itinerarios ite={ite} />
+                        <Itinerarios key={ite._id} ite={ite} />
                     )
                 }) : <div className="containerEmpty">
                     <div className="ayudaa">
