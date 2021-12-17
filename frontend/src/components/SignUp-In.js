@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const SignUpIn = (props) => {
 
-let niIdea = 0;
+  let niIdea = 0;
 
   const { handleSubmit } = props;
 
@@ -37,16 +37,11 @@ let niIdea = 0;
       google: true
     }
 
-    props.handleSubmit(googleUser.firstName,
-      googleUser.lastName,
-      googleUser.email,
-      googleUser.password,
-      googleUser.url,
-      googleUser.country,
-      googleUser.google)
+    props.handleSubmit(googleUser)
       .then((response) => response.data.success)
       .catch((error) => console.log(error))
   }
+
 
 
   // Sign in google
@@ -54,10 +49,10 @@ let niIdea = 0;
   const responseGoogles = (res) => {
     let googleUser = {
       email: res.profileObj.email,
-      password: res.profileObj.googleId,
-      google: true,
+      password: res.profileObj.googleId
+      
     }
-    props.handleSubmit(googleUser.email, googleUser.password, googleUser.google)
+    props.handleSubmit(googleUser.email, googleUser.password)
   }
 
 
@@ -68,32 +63,33 @@ let niIdea = 0;
   const handleSubmitInputs = (e) => {
     e.preventDefault();
 
-    navigate == "/signup"
-      ? handleSubmit(
-        inputFirstName.current.value,
+
+    if (navigate == "/signup") {
+      handleSubmit
+      (inputFirstName.current.value,
         inputLastName.current.value,
         inputEmail.current.value,
         inputPassword.current.value,
         inputUrl.current.value,
-        inputCountry.current.value,
+        inputCountry.current.value)
 
-      )
-        ? clear(
-          (inputFirstName.current.value = ""),
-          (inputLastName.current.value = ""),
-          (inputEmail.current.value = ""),
-          (inputPassword.current.value = ""),
-          (inputUrl.current.value = ""),
-          (inputCountry.current.value = "")
-        )
-        : console.log("")
-      : handleSubmit(inputEmail.current.value, inputPassword.current.value)
-        ? clear(
-          (inputEmail.current.value = ""),
-          (inputPassword.current.value = "")
-        )
-        : console.log("");
+      clear
+      ( inputFirstName.current.value = "",
+        inputLastName.current.value = "",
+        inputEmail.current.value = "",
+        inputPassword.current.value = "",
+        inputUrl.current.value = "",
+        inputCountry.current.value = "")
+
+    } else {
+      handleSubmit(inputEmail.current.value, inputPassword.current.value)
+      clear(inputEmail.current.value = "", inputPassword.current.value = "")
+    }
+
+
   };
+
+
 
   useEffect(() => {
     props.obtenerPaises();
@@ -114,13 +110,13 @@ let niIdea = 0;
               <select ref={inputCountry} name="country" id="">
                 <option value="">Select your Country</option>
                 {props.conuntries.map((pais) => {
-                  return <option key={pais.country == "Botswana"? niIdea ++:pais.country} value={pais.country}>{pais.country}</option>;
+                  return <option key={pais.country == "Botswana" ? niIdea++ : pais.country} value={pais.country}>{pais.country}</option>;
                 })}
               </select>
             </span>
             <input className="formSubmit" type="submit" value="Create account"></input>
             <Link to="/signin" className="">
-             Do you already have an account
+              Do you already have an account
 
             </Link>
           </form>
@@ -143,7 +139,7 @@ let niIdea = 0;
             <span><input ref={inputPassword} type="password" placeholder="Password" /></span>
             <input className="formSubmit" type="submit" value="Sign In"></input>
             <Link to="/signup" className="">
-            Don't have an account 
+              Don't have an account
 
             </Link>
           </form>

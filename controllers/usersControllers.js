@@ -15,11 +15,11 @@ const userControllers = {
 
     newUser: async(req, res) => {
         
-        let { firstName,lastName,email,password,url,country,google } = req.body      
+        let { firstName,lastName,email,password,url,country, google } = req.body      
         // tengo que hashear (hash) la contraseña y guardarla en la base de datos
  
         try {
-
+            console.log(req.body)
             const usuarioExiste = await Usersmodel.findOne({email})
             if (usuarioExiste){
                 return res.json({success: false, error:"The user already exists"})
@@ -54,16 +54,14 @@ const userControllers = {
     },
 
     userLoged: async(req, res)=>{
-        const { email, password,google } = req.body
+        const { email, password } = req.body
         if (email == '' || password == ''){
             return res.json({success: true, error:"Fields cannot be left empty"})
         }
         console.log(req.body)
         try {
             const usuarioExiste = await Usersmodel.findOne({email})
-            // if (usuarioExiste.google && !google){
-            //      res.json({success: true, error:"Invalid email"})
-            // }
+  
             if (!usuarioExiste){
                 res.json({success: true, error:"Mail does not exist"})
             }else{
@@ -81,6 +79,9 @@ const userControllers = {
             console.log(error);
             res.json({success: false, response: null, error: error})
         }
+    },
+    verifyToken : (req, res) => {
+        res.json({firstName: req.user.firstName, url:req.user.url, _id:req.user._id})
     }
 
 

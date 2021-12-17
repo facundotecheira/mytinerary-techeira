@@ -1,12 +1,9 @@
 import { Link } from 'react-router-dom';
 import { connect, useSelector } from "react-redux";
 import userAction from '../redux/actions/userAction';
+import { array, object } from 'joi';
 
 const Nav = (props) => {
-
-  const nombre = localStorage.getItem('firstName');
-  const imagen = localStorage.getItem('url');
-  const escuchando = props.usuario
   return (
     
     <div>
@@ -49,7 +46,7 @@ const Nav = (props) => {
 
             <div className='d-flex align-items-center'>
 
-            {nombre?<p className='mt-3'>Welcome! {nombre}</p>:''}
+            {props.usuario?<p className='mt-3'>Welcome! {props.usuario.firstName}</p>:''}
 
             <ul className="navbar-nav containeruser mb-2 mb-lg-0">
 
@@ -60,7 +57,7 @@ const Nav = (props) => {
           
                 <a className="nav-link dropdown-toggle " href="#s" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               
-                {imagen?<img className="imguser ms-4 mt-2" src={imagen} alt="usericon"></img>:
+                {props.usuario?<img className="imguser ms-4 mt-2" src={props.usuario.url} alt="usericon"></img>:
                 
                 <img className="imguser" src="/assets/person-circle.svg" alt="usericon"></img>}
             
@@ -69,7 +66,7 @@ const Nav = (props) => {
                 <ul className="dropdown-menu menuUser" aria-labelledby="navbarDropdown">
 
 
-                  {!nombre && (
+                  {!props.usuario && (
                     <li>
                       <Link to="/signin" className="dropdown-item">
                         Sign in
@@ -78,7 +75,7 @@ const Nav = (props) => {
                     </li>
                   )}
 
-                  {!nombre && (
+                  {!props.usuario && (
                     <li>
                       <Link to="/signup" className="dropdown-item">
                         Sign up
@@ -86,7 +83,7 @@ const Nav = (props) => {
                     </li>
                   )}
 
-                  {nombre && (
+                  {props.usuario && (
 
                     <li >
                       <Link to="/" className="dropdown-item signout-link ">

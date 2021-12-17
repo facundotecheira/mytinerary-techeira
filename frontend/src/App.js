@@ -6,13 +6,24 @@ import SignUpSinProps from './pages/SignUp';
 import SignInSinProps from './pages/SignIn';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { withRouter } from './utils/withRouter'
-
+import { useEffect } from "react"
+import { connect } from "react-redux"
+import userAction from './redux/actions/userAction';
 
 const City = withRouter(CitySinProps)
 const SignUp = withRouter(SignUpSinProps)
 const SignIn = withRouter(SignInSinProps)
 
-function App() {
+function App(props) {
+
+  useEffect(() => {
+
+    const token = localStorage.getItem('token');
+    props.signInLS(token)
+    
+
+  }, [])
+
   return (
     <BrowserRouter>
 
@@ -28,4 +39,8 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = {
+  signInLS: userAction.signInLS
+}
+
+export default connect(null, mapDispatchToProps)(App);

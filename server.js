@@ -3,8 +3,10 @@ const express = require ('express');
 const { response } = require('express');
 const Router = require('./routes/routes')
 const cors = require('cors');
-require('./config/database')
 const passport = require('passport')
+require('./config/database')
+require('./config/passport')
+
 // middlewares
 
 const app = express();

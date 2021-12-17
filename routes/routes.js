@@ -2,11 +2,16 @@ const Router = require('express').Router()
 const galeryControllers = require('../controllers/galeryControllers')
 const itineraryControllers = require('../controllers/itineraryControllers')
 const usersControllers = require('../controllers/usersControllers')
+const comentaryControllers = require('../controllers/comentaryControllers')
 const validator = require('../config/validator')
+
+const passport = require('passport')
+
 
 const {getGalery,postGalery,updateGalery,getAcity,deleteGalery} = galeryControllers
 const {getItinerary,postItinerary,getAItineraryForACity,getAItinerary,updateItinerary,deleteItinerary} = itineraryControllers
-const {newUser, userLoged} = usersControllers
+const {newUser, userLoged,verifyToken} = usersControllers
+const {newComment} = comentaryControllers
 
 // routes of the cities
 
@@ -42,5 +47,14 @@ Router.route('/auth/signUp')
 Router.route('/auth/signIn')
 .post(userLoged)
 
+// path to verify the token
+
+Router.route ("/verifyToken")
+.get(passport.authenticate('jwt', {session:false}),verifyToken)
+
+// commentary path
+
+Router.route('/comentary')
+.post(newComment)
 
 module.exports = Router

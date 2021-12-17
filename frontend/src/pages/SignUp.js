@@ -19,9 +19,9 @@ class SignUP extends React.Component {
 
     render() {
 
-        const nombre = localStorage.getItem('firstName');
+        const token = localStorage.getItem('token');
 
-        if (nombre) {
+        if (token) {
             return <Navigate to='/' />
         }
 
