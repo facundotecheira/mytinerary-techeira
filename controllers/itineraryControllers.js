@@ -38,6 +38,7 @@ const itineraryControllers = {
         const id = req.params.id
         try {
             itinerary = await Itinerarymodel.findOne({ _id: id })
+            console.log(itinerary)
         } catch (error) {
             console.log(error)
         }

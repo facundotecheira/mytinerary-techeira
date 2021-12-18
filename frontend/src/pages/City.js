@@ -5,6 +5,7 @@ import Itinerarios from '../components/Itinerarios'
 import { Link } from 'react-router-dom'
 import citiesAction from '../redux/actions/citiesAction';
 import itineraryAction from '../redux/actions/itineraryAction'
+
 import { connect } from 'react-redux';
 
 class City extends React.Component {
@@ -22,8 +23,10 @@ class City extends React.Component {
 
 
     componentDidMount() {
+        
         this.props.obtenerItinerarios(this.id)
         this.props.obtenerUnaCiudad(this.id)
+       
     }
 
 
@@ -31,7 +34,7 @@ class City extends React.Component {
     render() {
         const { title, country, path, currency, language } = this.props.listOneCity
         window.scrollTo(0, 0);
-
+       
         return (
 
 
@@ -60,15 +63,15 @@ class City extends React.Component {
                     <div className="ayudaa">
                         <h1>No itinerary found</h1>
                     </div>
-                    </div>}
+                </div>}
 
 
-                    <div className="divButtonCity">
-                        <Link key={'back'} to="/cities" className="buttonCity">Back to cities</Link>
-                    </div>
+                <div className="divButtonCity">
+                    <Link key={'back'} to="/cities" className="buttonCity">Back to cities</Link>
+                </div>
 
-                    <Footer />
-                </>
+                <Footer />
+            </>
         )
     }
 
@@ -76,15 +79,17 @@ class City extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-                    listaItinerary: state.itinerary.listItinerary,
-                listOneCity: state.galery.city
+        listaItinerary: state.itinerary.listItinerary,
+        listOneCity: state.galery.city,
+        
     }
 }
 
-                const mapDispatchToProps = {
-                    obtenerItinerarios: itineraryAction.getAItinerary,
-                obtenerUnaCiudad:  citiesAction.getOneCity
+const mapDispatchToProps = {
+    obtenerItinerarios: itineraryAction.getAItinerary,
+    obtenerUnaCiudad: citiesAction.getOneCity,
+
 
 }
 
-                export default connect(mapStateToProps, mapDispatchToProps)(City)
+export default connect(mapStateToProps, mapDispatchToProps)(City)

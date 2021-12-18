@@ -1,9 +1,21 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
-const Itinerarios = ({ ite }) => {
+import comentaryAction from '../redux/actions/comentaryAction';
+
+import { connect } from 'react-redux';
+
+const Itinerarios = (props) => {
     const [display, setDisplay] = useState(false)
     const HandleDisplay = () => setDisplay(!display)
 
+    const {ite} = props
+   
+    useEffect (()=>{
+        props.obtenerComentarios(ite._id)
+      },[])
+
+    // let id_user = props.usuario._id
+    //   let vacio = 'No comments'
     return (
 
         <div className="containerItinerary">
@@ -50,23 +62,31 @@ const Itinerarios = ({ ite }) => {
 
                 </div>
             </div>
+
+            
+
+            {display && <div className="containerComentaryImg">
+            <h3 className='text-center'>Activities</h3>
             <div className='images'>
+            
                 <div className='image'>
-                    <img className="imageImg" src="/assets/japan-fouji-1.jpg" />
-                    <p>Private Tour: Chartered Car to Mt. Fuji Lake Kawaguchiko or Hakone and Lake Ashi</p>
+                    <img className="imageImg" src={`/assets/${ite.image1}`} />
+                    <p>{ite.title1}</p>
                 </div>
                 <div className='image'>
-                    <img className="imageImg" src="/assets/japan-fouji-2.jpg" />
-                    <p>Private Full Day Sightseeing Tour to Mount Fuji and Hakone</p>
+                    <img className="imageImg" src={`/assets/${ite.image2}`} />
+                    <p>{ite.title2}</p>
                 </div>
                 <div className='image'>
-                    <img className="imageImg" src="/assets/japan-fouji-3.jpg" />
-                    <p>1 Day Private Mt Fuji Tour (Charter) - English Speaking Driver</p>
+                    <img className="imageImg" src={`/assets/${ite.image3}`} />
+                    <p>{ite.title3}</p>
                 </div>
             </div>
-            {display && <div className="mt-3">
-                <h3 className='text-center'>Under construction</h3>
-
+                <div className="containerComentary">
+                <h3 className='text-center'>Comments</h3>
+                <p className='comment'>{props.listaComentario?props.listaComentario.comentary:'No comments' } <span className='ms-2'>{props.usuario? props.usuario._id == props.listaComentario.userId ?'editar':'no':'' }</span></p>
+                <input type="text" className='comment'/>
+                </div>
             </div>}
             <button className='buttonItinerary' onClick={HandleDisplay}> {display ? "view less" : "view more"}</button>
         </div>
@@ -75,5 +95,18 @@ const Itinerarios = ({ ite }) => {
     )
 }
 
+const mapStateToProps = (state) => {
+    return {
 
-export default Itinerarios
+        listaComentario: state.comentary.listComentary,
+        usuario: state.user.usuario
+    }
+}
+
+const mapDispatchToProps = {
+    
+    obtenerComentarios: comentaryAction.obtenerComentarios
+    
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Itinerarios)

@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { connect, useSelector } from "react-redux";
 import userAction from '../redux/actions/userAction';
-import { array, object } from 'joi';
+
 
 const Nav = (props) => {
+  // console.log(props.usuario._id)
   return (
     
     <div>

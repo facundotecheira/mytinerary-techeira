@@ -11,7 +11,7 @@ const passport = require('passport')
 const {getGalery,postGalery,updateGalery,getAcity,deleteGalery} = galeryControllers
 const {getItinerary,postItinerary,getAItineraryForACity,getAItinerary,updateItinerary,deleteItinerary} = itineraryControllers
 const {newUser, userLoged,verifyToken} = usersControllers
-const {newComment} = comentaryControllers
+const {newComment,getOneComentary} = comentaryControllers
 
 // routes of the cities
 
@@ -54,7 +54,7 @@ Router.route ("/verifyToken")
 
 // commentary path
 
-Router.route('/comentary')
-.post(newComment)
+Router.route('/comentary/:id')
+.get(getOneComentary)
 
 module.exports = Router

@@ -10,8 +10,6 @@ const itineraryAction = {
 
     },
     
-
-
 }
 
 export default itineraryAction
