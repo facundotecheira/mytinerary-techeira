@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import comentaryAction from '../redux/actions/comentaryAction';
 
@@ -8,16 +8,44 @@ const Itinerarios = (props) => {
     const [display, setDisplay] = useState(false)
     const HandleDisplay = () => setDisplay(!display)
 
-    const {ite} = props
-   
-    useEffect (()=>{
+    const { ite } = props
+    const inputHandler = useRef()
+
+    useEffect(() => {
         props.obtenerComentarios(ite._id)
-      },[])
+    }, [props.auxiliar])
 
-    // let id_user = props.usuario._id
-    //   let vacio = 'No comments'
+  
+
+    const sendComment = () => {
+        let commentValue = inputHandler.current.value;
+        
+        props.agregarComentarios(commentValue,props.usuario._id,ite._id);
+        inputHandler.current.value = '';
+       
+        // .then((res)=> {
+        //     if(props.token){
+        //         setAllComments(res)
+        //         inputHandler.current.value=""
+        //     }else{
+        //         toasty ('error', 'You must be logged in to comment this post')
+        //     }
+
+        // })
+        // .catch((error) => console.log(error))
+    }
+
+    const handlerEnter = (e) => {
+        if (e.key === 'Enter') {
+            
+             sendComment()
+
+        }
+    }
+
+
     return (
-
+        
         <div className="containerItinerary">
             <div className='containerImgInformation'>
                 <div className="containerImgItinerary">
@@ -63,29 +91,41 @@ const Itinerarios = (props) => {
                 </div>
             </div>
 
-            
 
             {display && <div className="containerComentaryImg">
-            <h3 className='text-center'>Activities</h3>
-            <div className='images'>
-            
-                <div className='image'>
-                    <img className="imageImg" src={`/assets/${ite.image1}`} />
-                    <p>{ite.title1}</p>
+                <h3 className='text-center'>Activities</h3>
+                <div className='images'>
+
+                    <div className='image'>
+                        <img className="imageImg" src={`/assets/${ite.image1}`} />
+                        <p>{ite.title1}</p>
+                    </div>
+                    <div className='image'>
+                        <img className="imageImg" src={`/assets/${ite.image2}`} />
+                        <p>{ite.title2}</p>
+                    </div>
+                    <div className='image'>
+                        <img className="imageImg" src={`/assets/${ite.image3}`} />
+                        <p>{ite.title3}</p>
+                    </div>
                 </div>
-                <div className='image'>
-                    <img className="imageImg" src={`/assets/${ite.image2}`} />
-                    <p>{ite.title2}</p>
-                </div>
-                <div className='image'>
-                    <img className="imageImg" src={`/assets/${ite.image3}`} />
-                    <p>{ite.title3}</p>
-                </div>
-            </div>
                 <div className="containerComentary">
-                <h3 className='text-center'>Comments</h3>
-                <p className='comment'>{props.listaComentario?props.listaComentario.comentary:'No comments' } <span className='ms-2'>{props.usuario? props.usuario._id == props.listaComentario.userId ?'editar':'no':'' }</span></p>
-                <input type="text" className='comment'/>
+                    <h3 className='text-center'>Comments</h3>
+                    
+                    {props.listaComentario && props.listaComentario.map((nose)=>{
+
+                            if(props.usuario && props.usuario._id == nose.userId){
+                                return <input type="text" className='comment' placeholder={nose.comentary}  />
+                            }else{
+                                return <p className='comment'>{ nose.comentary } </p>
+                            }
+                            
+                    
+                    })}
+
+                
+                    <input type="text" ref={inputHandler} onKeyPress={handlerEnter} className='comment' />
+
                 </div>
             </div>}
             <button className='buttonItinerary' onClick={HandleDisplay}> {display ? "view less" : "view more"}</button>
@@ -99,14 +139,16 @@ const mapStateToProps = (state) => {
     return {
 
         listaComentario: state.comentary.listComentary,
+        auxiliar: state.comentary.auxiliar,
         usuario: state.user.usuario
     }
 }
 
 const mapDispatchToProps = {
-    
-    obtenerComentarios: comentaryAction.obtenerComentarios
-    
+
+    obtenerComentarios: comentaryAction.obtenerComentarios,
+    agregarComentarios: comentaryAction.agregarComentarios
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Itinerarios)

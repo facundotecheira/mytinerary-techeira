@@ -6,6 +6,7 @@ const comentaryControllers = require('../controllers/comentaryControllers')
 const validator = require('../config/validator')
 
 const passport = require('passport')
+const { Route } = require('express')
 
 
 const {getGalery,postGalery,updateGalery,getAcity,deleteGalery} = galeryControllers
@@ -52,9 +53,17 @@ Router.route('/auth/signIn')
 Router.route ("/verifyToken")
 .get(passport.authenticate('jwt', {session:false}),verifyToken)
 
+
 // commentary path
+
 
 Router.route('/comentary/:id')
 .get(getOneComentary)
+
+
+
+Router.route('/comentary')
+.post(newComment)
+
 
 module.exports = Router

@@ -1,4 +1,4 @@
-const comentaryReducer = (state = { listComentary: [] }, action) => {
+const comentaryReducer = (state = { listComentary: [], auxiliar: [] }, action) => {
     // de acuerdo a la action que reciva va a modificar el store
     // de alguna manera
 
@@ -10,7 +10,16 @@ const comentaryReducer = (state = { listComentary: [] }, action) => {
             ...state,
             listComentary: action.payload
             
-         }  
+         }
+
+         case 'ADD_COMENTARY':
+
+         return{
+             ...state,
+             auxiliar: action.payload
+             
+         }
+
     
         default:
             return state

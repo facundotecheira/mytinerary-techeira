@@ -3,15 +3,25 @@ const ComentaryModel = require('../models/ComentaryModel')
 const comentaryControllers = {
 
     newComment: async(req,res) =>{
-        const comentary = new ComentaryModel( req.body ).save()
-        .then((response) => res.json({ response }))
+        let { comentary, userId, itinerary } = req.body   
+
+        const nuevoComentario = new ComentaryModel({
+            comentary,
+            userId,
+            itinerary,
+            
+            
+        })
+        await nuevoComentario.save()
+        return res.json({success: true, response: {nuevoComentario}, error: null})
+       
 
     },
     getOneComentary: async (req, res) => {
         let comentary
         const id = req.params.id
         try {
-            comentary = await ComentaryModel.findOne({ itinerary: id })
+            comentary = await ComentaryModel.find({ itinerary: id })
     
         } catch (error) {
             console.log(error)
