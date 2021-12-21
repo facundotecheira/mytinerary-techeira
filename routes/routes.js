@@ -57,12 +57,13 @@ Router.route ("/verifyToken")
 // commentary path
 
 
-Router.route('/comentary/:id')
-.get(getOneComentary)
+// Router.route('/comentary/:id')
+// .get(getOneComentary)
 
 
 
 Router.route('/comentary')
+.get(getOneComentary)
 .post(newComment)
 
 

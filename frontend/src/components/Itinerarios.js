@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import comentaryAction from '../redux/actions/comentaryAction';
-
+import Comments from './Comments';
 import { connect } from 'react-redux';
 
 const Itinerarios = (props) => {
@@ -12,40 +12,35 @@ const Itinerarios = (props) => {
     const inputHandler = useRef()
 
     useEffect(() => {
-        props.obtenerComentarios(ite._id)
+        props.obtenerComentarios()
+
     }, [props.auxiliar])
 
-  
+    
 
     const sendComment = () => {
         let commentValue = inputHandler.current.value;
-        
-        props.agregarComentarios(commentValue,props.usuario._id,ite._id);
-        inputHandler.current.value = '';
-       
-        // .then((res)=> {
-        //     if(props.token){
-        //         setAllComments(res)
-        //         inputHandler.current.value=""
-        //     }else{
-        //         toasty ('error', 'You must be logged in to comment this post')
-        //     }
 
-        // })
-        // .catch((error) => console.log(error))
+        props.agregarComentarios(commentValue, props.usuario._id, ite._id);
+        inputHandler.current.value = '';
+ 
     }
 
     const handlerEnter = (e) => {
         if (e.key === 'Enter') {
-            
-             sendComment()
+
+            sendComment()
 
         }
     }
 
 
+
+
+
+
     return (
-        
+
         <div className="containerItinerary">
             <div className='containerImgInformation'>
                 <div className="containerImgItinerary">
@@ -109,21 +104,34 @@ const Itinerarios = (props) => {
                         <p>{ite.title3}</p>
                     </div>
                 </div>
+
+
+
                 <div className="containerComentary">
                     <h3 className='text-center'>Comments</h3>
-                    
-                    {props.listaComentario && props.listaComentario.map((nose)=>{
 
-                            if(props.usuario && props.usuario._id == nose.userId){
-                                return <input type="text" className='comment' placeholder={nose.comentary}  />
-                            }else{
-                                return <p className='comment'>{ nose.comentary } </p>
-                            }
-                            
-                    
+                    {props.listaComentario && props.listaComentario.map((comentario) => {
+                        
+                        return(
+                            <Comments id = {ite._id} todo ={[comentario]} />
+                        )
+                        
                     })}
 
-                
+                    {/* {props.listaComentario && props.listaComentario.map((nose) => {
+
+                      
+                      
+                        if(props.usuario && props.usuario._id == nose.userId) {
+                             return <input type="text" className='comment' defaultValue={nose.comentary} />
+                         } else {
+                             return <p className='comment'>{nose.comentary} </p>
+                     }
+
+
+                     })} */}
+
+
                     <input type="text" ref={inputHandler} onKeyPress={handlerEnter} className='comment' />
 
                 </div>

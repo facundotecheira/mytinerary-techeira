@@ -21,7 +21,7 @@ const comentaryControllers = {
         let comentary
         const id = req.params.id
         try {
-            comentary = await ComentaryModel.find({ itinerary: id })
+            comentary = await ComentaryModel.find()
     
         } catch (error) {
             console.log(error)

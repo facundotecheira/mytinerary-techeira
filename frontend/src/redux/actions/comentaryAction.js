@@ -17,7 +17,7 @@ const comentaryAction = {
     obtenerComentarios: (id) => {
         return async (dispatch, getState) => {
       
-            const user = await axios.get(`http://localhost:4000/api/comentary/${id}`)
+            const user = await axios.get(`http://localhost:4000/api/comentary`)
             // console.log(user.data.response)
             dispatch({ type: 'GET_COMENTARY', payload: user.data.response})
       
