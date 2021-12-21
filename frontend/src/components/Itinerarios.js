@@ -5,6 +5,7 @@ import Comments from './Comments';
 import { connect } from 'react-redux';
 
 const Itinerarios = (props) => {
+    const [renderComments, setRenderComments] = useState(true)
     const [display, setDisplay] = useState(false)
     const HandleDisplay = () => setDisplay(!display)
 
@@ -16,21 +17,32 @@ const Itinerarios = (props) => {
 
     }, [props.auxiliar])
 
-    
+
 
     const sendComment = () => {
         let commentValue = inputHandler.current.value;
+        if (commentValue !== '') {
+            props.agregarComentarios(commentValue, props.usuario._id, ite._id);
+            inputHandler.current.value = '';
+        }
 
-        props.agregarComentarios(commentValue, props.usuario._id, ite._id);
-        inputHandler.current.value = '';
- 
+
+    }
+
+    const editComment = (commentId, comment) => {
+        props.editarComentario(commentId, comment)
+            .then((res) => {
+                    
+                    props.obtenerComentarios()
+                    setRenderComments(!renderComments)
+   
+            })
+            .catch((error) => console.log(error))
     }
 
     const handlerEnter = (e) => {
         if (e.key === 'Enter') {
-
             sendComment()
-
         }
     }
 
@@ -111,25 +123,13 @@ const Itinerarios = (props) => {
                     <h3 className='text-center'>Comments</h3>
 
                     {props.listaComentario && props.listaComentario.map((comentario) => {
-                        
-                        return(
-                            <Comments id = {ite._id} todo ={[comentario]} />
+
+                        return (
+                            <Comments id={ite._id} render={renderComments} todo={[comentario]} editComment={editComment} />
                         )
-                        
+
                     })}
 
-                    {/* {props.listaComentario && props.listaComentario.map((nose) => {
-
-                      
-                      
-                        if(props.usuario && props.usuario._id == nose.userId) {
-                             return <input type="text" className='comment' defaultValue={nose.comentary} />
-                         } else {
-                             return <p className='comment'>{nose.comentary} </p>
-                     }
-
-
-                     })} */}
 
 
                     <input type="text" ref={inputHandler} onKeyPress={handlerEnter} className='comment' />
@@ -155,7 +155,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
 
     obtenerComentarios: comentaryAction.obtenerComentarios,
-    agregarComentarios: comentaryAction.agregarComentarios
+    agregarComentarios: comentaryAction.agregarComentarios,
+    editarComentario: comentaryAction.editarComentario
 
 }
 

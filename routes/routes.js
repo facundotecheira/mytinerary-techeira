@@ -12,7 +12,7 @@ const { Route } = require('express')
 const {getGalery,postGalery,updateGalery,getAcity,deleteGalery} = galeryControllers
 const {getItinerary,postItinerary,getAItineraryForACity,getAItinerary,updateItinerary,deleteItinerary} = itineraryControllers
 const {newUser, userLoged,verifyToken} = usersControllers
-const {newComment,getOneComentary} = comentaryControllers
+const {newComment,getOneComentary,updateComentary} = comentaryControllers
 
 // routes of the cities
 
@@ -57,8 +57,8 @@ Router.route ("/verifyToken")
 // commentary path
 
 
-// Router.route('/comentary/:id')
-// .get(getOneComentary)
+Router.route('/comentary/:id')
+.put(updateComentary)
 
 
 

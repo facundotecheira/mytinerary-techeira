@@ -1,27 +1,61 @@
-import { array } from 'joi';
+import { useState, useRef, useEffect } from "react"
 import { connect } from 'react-redux';
-const Comments = (props)=>{
-    const {id,todo} = props
-    let auxiliar = todo.filter((xd)=>xd.itinerary == id)
+import { FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
+import { IoSend } from 'react-icons/io5'
+import comentaryAction from '../redux/actions/comentaryAction';
+
+const Comments = (props) => {
+
+    const inputHandler = useRef() 
+    const [shown, setShown] = useState(false)
+    const { id, todo } = props
+    let comentariosFiltrados = todo.filter((coment) => coment.itinerary == id)
+
     
-    return(
+    useEffect(() => {
+        setShown(false)
+        console.log(props.render)
+    }, [props.render])
+
+
+
+    return (
         <>
-            
-             {auxiliar && auxiliar.map((nose) => {
 
-                      
-                      
-                        if(props.usuario && props.usuario._id == nose.userId) {
-                             return <input type="text" className='comment' defaultValue={nose.comentary} />
-                         } else {
-                             return <p className='comment'>{nose.comentary} </p>
-                     }
+            {comentariosFiltrados && comentariosFiltrados.map((comentario) => {
+                
+                if (props.usuario && props.usuario._id == comentario.userId) {
+                  
+                    if (!shown) {
+
+                        return (
+                            <div className="containerComent">
+                                <p className='comment'>{comentario.comentary} </p>
+                                <FaPencilAlt className="iconEdit" onClick={() => setShown(!shown)} />
+                            </div>
 
 
-                     })} 
+                        )
+                    } else {
+                        return (
+
+                            <div className="containerComent">
+                                <input type="text" className='comment' defaultValue={comentario.comentary} ref={inputHandler} />
+                                <IoSend className="send" onClick={()=>  props.editComment(comentario._id,  inputHandler.current.value)  }/> 
+                                <FaTrashAlt className="iconDelete" />
+                            </div>
+
+                        )
+                    }
+
+                } else {
+                    return <p className='comment'>{comentario.comentary} </p>
+                }
+
+            })}
 
         </>
-       
+
     )
 
 }
@@ -30,9 +64,9 @@ const mapStateToProps = (state) => {
     return {
 
         listaComentario: state.comentary.listComentary,
-        // auxiliar: state.comentary.auxiliar,
-        usuario: state.user.usuario
+        usuario: state.user.usuario,
+        auxiliar: state.comentary.auxiliar
     }
 }
 
-export default connect(mapStateToProps) (Comments)
+export default connect(mapStateToProps)(Comments)
