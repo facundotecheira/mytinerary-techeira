@@ -2,6 +2,7 @@ const Router = require('express').Router()
 const galeryControllers = require('../controllers/galeryControllers')
 const itineraryControllers = require('../controllers/itineraryControllers')
 const usersControllers = require('../controllers/usersControllers')
+const activityController =  require('../controllers/activityController')
 const comentaryControllers = require('../controllers/comentaryControllers')
 const validator = require('../config/validator')
 
@@ -12,8 +13,8 @@ const { Route } = require('express')
 const {getGalery,postGalery,updateGalery,getAcity,deleteGalery} = galeryControllers
 const {getItinerary,postItinerary,getAItineraryForACity,getAItinerary,updateItinerary,deleteItinerary} = itineraryControllers
 const {newUser, userLoged,verifyToken} = usersControllers
-const {newComment,getOneComentary,updateComentary} = comentaryControllers
-
+const {newComment,getComentary,updateComentary,deleteComentary} = comentaryControllers
+const {getActivieties,addNewActivities} = activityController
 // routes of the cities
 
 Router.route('/galery')
@@ -54,16 +55,25 @@ Router.route ("/verifyToken")
 .get(passport.authenticate('jwt', {session:false}),verifyToken)
 
 
+// activieties path
+
+// Router.route('/activities/:id')
+// .get(getActivieties)
+
+Router.route('/activities')
+.post(addNewActivities)
+.get(getActivieties)
+
 // commentary path
 
 
 Router.route('/comentary/:id')
 .put(updateComentary)
-
+.delete(deleteComentary)
 
 
 Router.route('/comentary')
-.get(getOneComentary)
+.get(getComentary)
 .post(newComment)
 
 

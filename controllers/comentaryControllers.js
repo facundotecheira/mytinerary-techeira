@@ -3,10 +3,11 @@ const ComentaryModel = require('../models/ComentaryModel')
 const comentaryControllers = {
 
     newComment: async (req, res) => {
-        let { comentary, userId, itinerary } = req.body
+        let { comentary,comentaryPhoto, userId, itinerary } = req.body
 
         const nuevoComentario = new ComentaryModel({
             comentary,
+            comentaryPhoto,
             userId,
             itinerary,
 
@@ -17,7 +18,7 @@ const comentaryControllers = {
 
 
     },
-    getOneComentary: async (req, res) => {
+    getComentary: async (req, res) => {
         let comentary
         const id = req.params.id
         try {
@@ -42,6 +43,21 @@ const comentaryControllers = {
         }
         res.json({ response: actualizado, success: true })
 
+    },
+
+
+    deleteComentary: async(req,res)=>{
+        const id = req.params.id
+        let comentary
+        try{
+            await ComentaryModel.findOneAndDelete({_id:id})
+            comentary = await ComentaryModel.find()
+
+        }catch(error){
+            console.log(error)
+        }
+
+        res.json({response: comentary , success:true})
     }
 
 

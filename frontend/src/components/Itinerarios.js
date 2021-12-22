@@ -1,19 +1,22 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import comentaryAction from '../redux/actions/comentaryAction';
+import itineraryAction from '../redux/actions/itineraryAction';
 import Comments from './Comments';
+import Activity from './Activity';
 import { connect } from 'react-redux';
 
 const Itinerarios = (props) => {
     const [renderComments, setRenderComments] = useState(true)
     const [display, setDisplay] = useState(false)
     const HandleDisplay = () => setDisplay(!display)
-
     const { ite } = props
     const inputHandler = useRef()
 
     useEffect(() => {
+
         props.obtenerComentarios()
+        props.obtenerActividades()
 
     }, [props.auxiliar])
 
@@ -22,23 +25,35 @@ const Itinerarios = (props) => {
     const sendComment = () => {
         let commentValue = inputHandler.current.value;
         if (commentValue !== '') {
-            props.agregarComentarios(commentValue, props.usuario._id, ite._id);
+            props.agregarComentarios(commentValue, props.usuario.url, props.usuario._id, ite._id);
             inputHandler.current.value = '';
         }
 
 
     }
 
-    const editComment = (commentId, comment) => {
-        props.editarComentario(commentId, comment)
+    const deleteComment = (comentarioId) => {
+        props.eliminarComentario(comentarioId)
             .then((res) => {
-                    
-                    props.obtenerComentarios()
-                    setRenderComments(!renderComments)
-   
+                props.obtenerComentarios()
+                // setRenderComments(!renderComments)
             })
             .catch((error) => console.log(error))
     }
+
+
+    const editComment = (commentId, comment) => {
+        props.editarComentario(commentId, comment)
+            .then((res) => {
+
+                props.obtenerComentarios()
+                setRenderComments(!renderComments)
+
+            })
+            .catch((error) => console.log(error))
+    }
+
+
 
     const handlerEnter = (e) => {
         if (e.key === 'Enter') {
@@ -97,25 +112,18 @@ const Itinerarios = (props) => {
 
                 </div>
             </div>
-
+            
+              
 
             {display && <div className="containerComentaryImg">
                 <h3 className='text-center'>Activities</h3>
-                <div className='images'>
 
-                    <div className='image'>
-                        <img className="imageImg" src={`/assets/${ite.image1}`} />
-                        <p>{ite.title1}</p>
-                    </div>
-                    <div className='image'>
-                        <img className="imageImg" src={`/assets/${ite.image2}`} />
-                        <p>{ite.title2}</p>
-                    </div>
-                    <div className='image'>
-                        <img className="imageImg" src={`/assets/${ite.image3}`} />
-                        <p>{ite.title3}</p>
-                    </div>
-                </div>
+               
+                {props.listaActividades && props.listaActividades.map((actividades)=>{
+                    return(
+                        <Activity id={ite._id} todo = {[actividades]}/>
+                    )
+                }) }
 
 
 
@@ -125,7 +133,7 @@ const Itinerarios = (props) => {
                     {props.listaComentario && props.listaComentario.map((comentario) => {
 
                         return (
-                            <Comments id={ite._id} render={renderComments} todo={[comentario]} editComment={editComment} />
+                            <Comments id={ite._id} render={renderComments} todo={[comentario]} deleteComment={deleteComment} editComment={editComment} />
                         )
 
                     })}
@@ -147,8 +155,10 @@ const mapStateToProps = (state) => {
     return {
 
         listaComentario: state.comentary.listComentary,
+        listaActividades: state.itinerary.listActivities,
         auxiliar: state.comentary.auxiliar,
         usuario: state.user.usuario
+
     }
 }
 
@@ -156,8 +166,10 @@ const mapDispatchToProps = {
 
     obtenerComentarios: comentaryAction.obtenerComentarios,
     agregarComentarios: comentaryAction.agregarComentarios,
-    editarComentario: comentaryAction.editarComentario
+    editarComentario: comentaryAction.editarComentario,
+    eliminarComentario: comentaryAction.eliminarComentario,
 
+    obtenerActividades: itineraryAction.obtenerActividades
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Itinerarios)
