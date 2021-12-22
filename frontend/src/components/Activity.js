@@ -7,38 +7,47 @@ import { IoSend } from 'react-icons/io5'
 const Activity = (props) => {
 
     const { id, todo } = props
-    let auxiliar;
 
-    todo.map((xd) => {
-        if (xd.itineraryId == id) {
-            auxiliar = xd
-        }
 
-    })
-
-//     let actividadesFiltradas = todo.filter((actividades) => actividades.itineraryId == id)
-
-//    actividadesFiltradas.map((probando)=>{
-//        console.log(probando)
-//    })
+    let actividadesFiltradas = todo.filter((actividades) => actividades.itineraryId == id)
 
 
     return (
         <>
-            <div className='images'>
 
-                {auxiliar.activities.map((nose) => {
-                    return (
-                        <div className='image'>
-                            <img className="imageImg" src={`/assets/${nose.photo}`} />
-                            <p>{nose.name}</p>
-                        </div>
-                    )
-                })}
+            {actividadesFiltradas.length != 0 ?
+                <div>
 
-            </div>
+                    <h3 className='text-center'>Activities</h3>
+                    <div className='images'>
+
+
+
+                        {actividadesFiltradas.map((actividades) => {
+                            return (
+                                actividades.activities.map((acti) => {
+                                    return (
+
+                                        <div className='image'>
+                                            <img className="imageImg" src={`/assets/${acti.photo}`} />
+                                            <p>{acti.name}</p>
+                                        </div>
+                                    )
+
+                                })
+                            )
+
+                        })}
+
+                    </div>
+                </div>
+                : console.log('nothing')}
+
+
+
         </>
     )
+
 
 
 }
@@ -54,3 +63,5 @@ const mapStateToProps = (state) => {
     }
 }
 export default connect(mapStateToProps)(Activity)
+
+

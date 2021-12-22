@@ -4,7 +4,9 @@ import comentaryAction from '../redux/actions/comentaryAction';
 import itineraryAction from '../redux/actions/itineraryAction';
 import Comments from './Comments';
 import Activity from './Activity';
+import toasty from "../components/Toast"
 import { connect } from 'react-redux';
+import { IoSend } from 'react-icons/io5'
 
 const Itinerarios = (props) => {
     const [renderComments, setRenderComments] = useState(true)
@@ -24,10 +26,17 @@ const Itinerarios = (props) => {
 
     const sendComment = () => {
         let commentValue = inputHandler.current.value;
-        if (commentValue !== '') {
+        if(props.usuario){
+            if (commentValue !== '') {
             props.agregarComentarios(commentValue, props.usuario.url, props.usuario._id, ite._id);
             inputHandler.current.value = '';
+        }else{
+            toasty('error', 'You cannot send empty comments')
         }
+        }else{
+            toasty('error', 'You must be logged in')
+        }
+        
 
 
     }
@@ -57,7 +66,8 @@ const Itinerarios = (props) => {
 
     const handlerEnter = (e) => {
         if (e.key === 'Enter') {
-            sendComment()
+            
+             sendComment()
         }
     }
 
@@ -116,7 +126,7 @@ const Itinerarios = (props) => {
               
 
             {display && <div className="containerComentaryImg">
-                <h3 className='text-center'>Activities</h3>
+                {/* <h3 className='text-center'>Activities</h3> */}
 
                
                 {props.listaActividades && props.listaActividades.map((actividades)=>{
@@ -139,8 +149,11 @@ const Itinerarios = (props) => {
                     })}
 
 
-
-                    <input type="text" ref={inputHandler} onKeyPress={handlerEnter} className='comment' />
+                    <div className='containerInputSend'>
+                        <input type="text" ref={inputHandler} onKeyPress={handlerEnter} className='comment' />
+                        <IoSend className="send" onClick={() => sendComment()} />
+                    </div>
+                    
 
                 </div>
             </div>}

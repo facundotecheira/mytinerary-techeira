@@ -364,7 +364,7 @@
   padding: 1rem;
   justify-content: space-between;
   width: 100%;
-  border:1px solid black
+  /* border:1px solid black */
 }
 
 .image{
@@ -445,6 +445,10 @@
   cursor: pointer;
 }
 
+.containerInputSend{
+  display: flex;
+  align-items: center;
+}
 
 /* Form */
 
@@ -933,7 +937,7 @@ footer .navegation a:hover {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    border:1px solid black;
+    /* border:1px solid black; */
     
   }
 
