@@ -1,6 +1,6 @@
 
 
-const { response } = require('express')
+
 const Itinerarymodel = require('../models/ItineraryModel')
 
 const itineraryControllers = {
@@ -18,7 +18,7 @@ const itineraryControllers = {
             succes: error ? false : true,
             error: error
         })
-   
+
 
     },
 
@@ -47,8 +47,8 @@ const itineraryControllers = {
 
     postItinerary: (req, res) => {
 
-        const itineraries = new Itinerarymodel( req.body ).save()
-        .then((response) => res.json({ response }))
+        const itineraries = new Itinerarymodel(req.body).save()
+            .then((response) => res.json({ response }))
 
     },
     updateItinerary: async (req, res) => {
@@ -66,20 +66,46 @@ const itineraryControllers = {
         res.json({ success: actualizado ? true : false })
 
     },
-    deleteItinerary: async(req,res)=>{
+    deleteItinerary: async (req, res) => {
         const id = req.params.id
         let itinerary
-        try{
-            await Itinerarymodel.findOneAndDelete({_id:id})
+        try {
+            await Itinerarymodel.findOneAndDelete({ _id: id })
             itinerary = await Itinerarymodel.find()
 
-        }catch(error){
+        } catch (error) {
             console.log(error)
         }
 
-        res.json({response: itinerary , success:true})
+        res.json({ response: itinerary, success: true })
     },
+
+    likeItinerary: (req, res) => {
+        let idUser = req.body
+        Itinerarymodel.findOne({ _id: req.params.id })
+            .then((itinerary) => {
+               
+
+                if (itinerary.likes.includes(idUser.idUser)) {
+                    console.log('toy aca')
+                    Itinerarymodel.findOneAndUpdate({ _id: req.params.id }, { $pull: { likes: idUser.idUser} }, { new: true })
+                    .then((newItinerary) => res.json({ success: true, response: newItinerary.likes }))
+                    .catch((error) => console.log(error))
+
+                }
+                else {
+                    console.log('ahora toy aca')
+                    Itinerarymodel.findOneAndUpdate({ _id: req.params.id }, { $push: { likes: idUser.idUser} }, { new: true })
+                        .then((newItinerary) => res.json({ success: true, response: newItinerary.likes }))
+                        .catch((error) => console.log(error))
+                }
+            })
+        .catch((error) => res.json({ success: false, response: error }))
+    }
 
 }
 
 module.exports = itineraryControllers
+
+
+

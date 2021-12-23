@@ -7,6 +7,7 @@ import Activity from './Activity';
 import toasty from "../components/Toast"
 import { connect } from 'react-redux';
 import { IoSend } from 'react-icons/io5'
+import { FaHeart, FaRegHeart } from 'react-icons/fa'
 
 const Itinerarios = (props) => {
     const [renderComments, setRenderComments] = useState(true)
@@ -15,28 +16,56 @@ const Itinerarios = (props) => {
     const { ite } = props
     const inputHandler = useRef()
 
+    const [likeIcon, setLikeIcon] = useState(true)
+    const [itinerariesLikes, setItinerariesLikes] = useState(ite.likes)
+
+
+
+    let liked = itinerariesLikes.includes(props.usuario && props.usuario._id) ? <FaHeart className="heartIconRed" /> : <FaRegHeart className="heartIcon" />
+
+
+
+
     useEffect(() => {
 
         props.obtenerComentarios()
         props.obtenerActividades()
 
+
     }, [props.auxiliar])
+
+
+    const likeItinerary = async () => {
+        setLikeIcon(false)
+        if (!props.usuario) {
+            toasty('error', 'You must be logged in to like this post')
+        } else {
+            let response = await props.likeItinerary(ite._id, props.usuario._id)
+            console.log(response)
+            setItinerariesLikes(response)
+
+        }
+        setLikeIcon(true)
+    }
+
+
 
 
 
     const sendComment = () => {
         let commentValue = inputHandler.current.value;
-        if(props.usuario){
+        if (props.usuario) {
             if (commentValue !== '') {
-            props.agregarComentarios(commentValue, props.usuario.url, props.usuario._id, ite._id);
-            inputHandler.current.value = '';
-        }else{
-            toasty('error', 'You cannot send empty comments')
-        }
-        }else{
+
+                props.agregarComentarios(commentValue, props.usuario.url, props.usuario._id, ite._id);
+                inputHandler.current.value = '';
+            } else {
+                toasty('error', 'You cannot send empty comments')
+            }
+        } else {
             toasty('error', 'You must be logged in')
         }
-        
+
 
 
     }
@@ -66,8 +95,8 @@ const Itinerarios = (props) => {
 
     const handlerEnter = (e) => {
         if (e.key === 'Enter') {
-            
-             sendComment()
+
+            sendComment()
         }
     }
 
@@ -99,7 +128,12 @@ const Itinerarios = (props) => {
 
                     <div key={'section2'} className="section2">
                         <h3 >
-                            {ite.title} <span > ❤ {ite.like}</span>
+                            {ite.title}
+                            <div onClick={(likeIcon ? likeItinerary : null)} className="liked d-flex align-items-start">
+                                <p className='me-3'>{itinerariesLikes.length}</p>
+                                {liked}
+
+                            </div>
                         </h3>
                         <p >
                             {ite.description}
@@ -122,18 +156,18 @@ const Itinerarios = (props) => {
 
                 </div>
             </div>
-            
-              
+
+
 
             {display && <div className="containerComentaryImg">
-                {/* <h3 className='text-center'>Activities</h3> */}
 
-               
-                {props.listaActividades && props.listaActividades.map((actividades)=>{
-                    return(
-                        <Activity id={ite._id} todo = {[actividades]}/>
+
+
+                {props.listaActividades && props.listaActividades.map((actividades) => {
+                    return (
+                        <Activity key={actividades._id} id={ite._id} todo={[actividades]} />
                     )
-                }) }
+                })}
 
 
 
@@ -143,7 +177,7 @@ const Itinerarios = (props) => {
                     {props.listaComentario && props.listaComentario.map((comentario) => {
 
                         return (
-                            <Comments id={ite._id} render={renderComments} todo={[comentario]} deleteComment={deleteComment} editComment={editComment} />
+                            <Comments key={comentario._id} id={ite._id} render={renderComments} todo={[comentario]} deleteComment={deleteComment} editComment={editComment} />
                         )
 
                     })}
@@ -153,7 +187,7 @@ const Itinerarios = (props) => {
                         <input type="text" ref={inputHandler} onKeyPress={handlerEnter} className='comment' />
                         <IoSend className="send" onClick={() => sendComment()} />
                     </div>
-                    
+
 
                 </div>
             </div>}
@@ -182,7 +216,8 @@ const mapDispatchToProps = {
     editarComentario: comentaryAction.editarComentario,
     eliminarComentario: comentaryAction.eliminarComentario,
 
-    obtenerActividades: itineraryAction.obtenerActividades
+    obtenerActividades: itineraryAction.obtenerActividades,
+    likeItinerary: itineraryAction.likeItinerary,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Itinerarios)

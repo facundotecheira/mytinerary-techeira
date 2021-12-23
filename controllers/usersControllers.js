@@ -39,14 +39,14 @@ const userControllers = {
                 })
 
                 await nuevoUsuario.save()
-                const token = jwt.sign({...nuevoUsuario}, process.env.SECRETKEY)
+                const token = jwt.sign({...nuevoUsuario}, process.env.SECRET_KEY)
                 return res.json({success: true, response: {token,...nuevoUsuario}, error: null})
                 // return res.json({success: true, error:"te has registrado correctamente"})
                 
             }
         
         }catch(error){
-            console.log('estoy aca',process.env.SECRETKEY,error)
+            console.log('estoy aca',process.env.SECRET_KEY,error)
             res.json({success: false, response: null, error: error})
         }
 
@@ -67,7 +67,7 @@ const userControllers = {
             }else{
                 let contraseñaCoincide = bcryptjs.compareSync(password, usuarioExiste.password)
                 if (contraseñaCoincide) {
-                    const token = jwt.sign({...usuarioExiste}, process.env.SECRETKEY)
+                    const token = jwt.sign({...usuarioExiste}, process.env.SECRET_KEY)
                     res.json({success: true, response: {token,...usuarioExiste} ,error:null})
                    
                 }else{

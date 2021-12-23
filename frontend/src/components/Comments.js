@@ -37,7 +37,7 @@ const Comments = (props) => {
 
     useEffect(() => {
         setShown(false)
-        console.log(props.render)
+     
     }, [props.render])
 
 
@@ -52,7 +52,7 @@ const Comments = (props) => {
                     if (!shown) {
 
                         return (
-                            <div className="containerComent">
+                            <div key={comentario._id} className="containerComent">
                                 {console.log(props.usuario.url)}
                                 <img className="imguser " src={comentario.comentaryPhoto} alt="usericon"></img>
                                 <p className='comment'>{comentario.comentary} </p>
@@ -64,7 +64,7 @@ const Comments = (props) => {
                     } else {
                         return (
 
-                            <div className="containerComent">
+                            <div key={comentario.comentaryPhoto} className="containerComent">
                                 <img className="imguser " src={comentario.comentaryPhoto} alt="usericon"></img>
                                 <input type="text" className='comment' defaultValue={comentario.comentary} ref={inputHandler} />
                                 <IoSend className="send" onClick={() => props.editComment(comentario._id, inputHandler.current.value)} />
@@ -77,7 +77,7 @@ const Comments = (props) => {
                 } else {
 
                     return (
-                        <div className="containerComent">
+                        <div key={comentario.comentary} className="containerComent">
                             <img className="imguser " src={comentario.comentaryPhoto} alt="usericon"></img>
                             <p className='comment'>{comentario.comentary} </p>
                         </div>
@@ -97,9 +97,9 @@ const Comments = (props) => {
 const mapStateToProps = (state) => {
     return {
 
-        listaComentario: state.comentary.listComentary,
+      
         usuario: state.user.usuario,
-        auxiliar: state.comentary.auxiliar
+
     }
 }
 

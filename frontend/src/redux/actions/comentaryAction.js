@@ -1,7 +1,7 @@
 import axios from 'axios'
 const comentaryAction = {
     
-    agregarComentarios:(comentary,comentaryPhoto, userId, itinerary)=>{
+    agregarComentarios:(comentary,comentaryPhoto, userId, itinerary,token)=>{
         return async (dispatch) => {
                     try{
                         let response = await axios.post(`http://localhost:4000/api/comentary`, {comentary,comentaryPhoto, userId, itinerary} )

@@ -28,7 +28,7 @@ const SignUpIn = (props) => {
 
   const responseGoogle = (res) => {
     let googleUser = {
-      firstName: res.profileObj.givenName,
+      firstName: res.profileObj.givenName ,
       lastName: res.profileObj.familyName,
       email: res.profileObj.email,
       password: res.profileObj.googleId,
@@ -37,7 +37,7 @@ const SignUpIn = (props) => {
       google: true
     }
 
-    props.handleSubmit(googleUser)
+    props.handleSubmit(googleUser.firstName,googleUser.lastName,googleUser.email,googleUser.password,googleUser.url,googleUser.country,googleUser.google)
       .then((response) => response.data.success)
       .catch((error) => console.log(error))
   }
@@ -65,6 +65,7 @@ const SignUpIn = (props) => {
 
 
     if (navigate == "/signup") {
+      
       handleSubmit
       (inputFirstName.current.value,
         inputLastName.current.value,

@@ -11,7 +11,7 @@ const { Route } = require('express')
 
 
 const {getGalery,postGalery,updateGalery,getAcity,deleteGalery} = galeryControllers
-const {getItinerary,postItinerary,getAItineraryForACity,getAItinerary,updateItinerary,deleteItinerary} = itineraryControllers
+const {getItinerary,postItinerary,getAItineraryForACity,getAItinerary,updateItinerary,deleteItinerary,likeItinerary} = itineraryControllers
 const {newUser, userLoged,verifyToken} = usersControllers
 const {newComment,getComentary,updateComentary,deleteComentary} = comentaryControllers
 const {getActivieties,addNewActivities} = activityController
@@ -63,6 +63,12 @@ Router.route ("/verifyToken")
 Router.route('/activities')
 .post(addNewActivities)
 .get(getActivieties)
+
+
+// like path
+
+Router.route("/itinerary/like/:id")
+.put(likeItinerary)
 
 // commentary path
 

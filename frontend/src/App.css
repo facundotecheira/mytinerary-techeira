@@ -189,6 +189,7 @@
 .citiInput {
   border: 1px solid black;
   width: 60%;
+  padding: 1rem;
 }
 
 /* City */
@@ -246,6 +247,7 @@
   color: white;
   padding: 1rem;
   border-radius: 5px;
+  margin-left: 1rem;
 }
 
 .buttonCity:hover{
@@ -404,7 +406,7 @@
 
 .containerComentaryImg{
 
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   margin: 2rem auto;
   height: 100%;
@@ -437,6 +439,10 @@
 
 .send{
   margin-left: 1rem;
+  cursor: pointer;
+}
+
+.liked{
   cursor: pointer;
 }
 

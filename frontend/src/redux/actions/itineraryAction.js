@@ -19,6 +19,19 @@ const itineraryAction = {
             dispatch({ type: 'GET_ALL_ACTIVIETIES', payload: response.data.response})
       
         }
+    },
+    likeItinerary: (id,idUser) =>{
+        return async () => {
+                try{
+                    let response = await axios.put(`http://localhost:4000/api/itinerary/like/${id}`,{idUser})
+                console.log(response.data.response)
+                    return response.data.response
+            
+                }catch (error){
+                    console.log(error)
+                }
+            
+        }
     }
     
 }

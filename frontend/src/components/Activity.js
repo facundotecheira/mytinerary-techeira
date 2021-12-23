@@ -7,7 +7,7 @@ import { IoSend } from 'react-icons/io5'
 const Activity = (props) => {
 
     const { id, todo } = props
-
+    let numer;
 
     let actividadesFiltradas = todo.filter((actividades) => actividades.itineraryId == id)
 
@@ -15,7 +15,7 @@ const Activity = (props) => {
     return (
         <>
 
-            {actividadesFiltradas.length != 0 ?
+            {actividadesFiltradas.length != 0 &&
                 <div>
 
                     <h3 className='text-center'>Activities</h3>
@@ -28,7 +28,7 @@ const Activity = (props) => {
                                 actividades.activities.map((acti) => {
                                     return (
 
-                                        <div className='image'>
+                                        <div key={acti.photo} className='image'>
                                             <img className="imageImg" src={`/assets/${acti.photo}`} />
                                             <p>{acti.name}</p>
                                         </div>
@@ -41,7 +41,7 @@ const Activity = (props) => {
 
                     </div>
                 </div>
-                : console.log('nothing')}
+                }
 
 
 

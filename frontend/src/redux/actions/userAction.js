@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const userAction = {
     
-    registrarUsuario: ({firstName, lastName, email, password, url, country, google}) => {
+    registrarUsuario: (firstName, lastName, email, password, url, country, google) => {
         return async (dispatch, getState) => {
             try {
                 
