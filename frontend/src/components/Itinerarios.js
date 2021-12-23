@@ -184,7 +184,7 @@ const Itinerarios = (props) => {
 
 
                     <div className='containerInputSend'>
-                        <input type="text" ref={inputHandler} onKeyPress={handlerEnter} className='comment' />
+                        <input type="text" ref={inputHandler} placeholder='Write a comment' onKeyPress={handlerEnter} className='comment' />
                         <IoSend className="send" onClick={() => sendComment()} />
                     </div>
 
