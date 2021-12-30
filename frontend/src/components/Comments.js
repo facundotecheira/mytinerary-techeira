@@ -10,6 +10,7 @@ const Comments = (props) => {
     const inputHandler = useRef()
     const [shown, setShown] = useState(false)
     const { id, todo } = props
+    
     let comentariosFiltrados = todo.filter((coment) => coment.itinerary == id)
 
 

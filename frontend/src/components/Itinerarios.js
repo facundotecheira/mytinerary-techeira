@@ -41,7 +41,7 @@ const Itinerarios = (props) => {
             toasty('error', 'You must be logged in to like this post')
         } else {
             let response = await props.likeItinerary(ite._id, props.usuario._id)
-            console.log(response)
+       
             setItinerariesLikes(response)
 
         }

@@ -1,6 +1,3 @@
-
-
-
 const Itinerarymodel = require('../models/ItineraryModel')
 
 const itineraryControllers = {
