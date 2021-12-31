@@ -12,7 +12,7 @@ const Nav = (props) => {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <Link to='/' className="navbar-brand">
-            <img className="iconbrand" src="/assets/logo2.png" alt="iconbrand"></img>
+            <img className="iconbrand" src="/assets/person-circle.svg" alt="iconbrand"></img>
             
           </Link>
           
