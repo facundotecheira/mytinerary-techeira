@@ -23,6 +23,11 @@ if(process.env.NODE_ENV === 'production'){
     })
 }
 
-app.listen(process.env.PORT || 4000,process.env.HOST || "0.0.0.0",()=>{
-    console.log(`server on port ${process.env.PORT || 4000}`);
-})
+// app.listen(process.env.PORT || 4000,process.env.HOST || "0.0.0.0",()=>{
+//     console.log(`server on port ${process.env.PORT || 4000}`);
+// })
+
+// var port_number = server.listen(process.env.PORT || 4000);
+// app.listen(port_number);
+
+app.listen(process.env.PORT || 4000, '0.0.0.0',()=>console.log('Running on port 4000'))
