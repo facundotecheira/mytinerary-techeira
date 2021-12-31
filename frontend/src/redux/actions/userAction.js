@@ -59,4 +59,4 @@ const userAction = {
     }
 }
 
-module.exports = userAction
+export default userAction
