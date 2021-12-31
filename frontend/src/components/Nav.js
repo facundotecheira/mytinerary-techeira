@@ -11,9 +11,10 @@ const Nav = (props) => {
       {/* {props.usuario.firstName} */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <Link to='/' className="navbar-brand">
+          <a  className="navbar-brand" href="#">
             <img className="iconbrand" src="/assets/logo3.png" alt="iconbrand"></img>
-          </Link>
+            
+          </a>
           
 
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

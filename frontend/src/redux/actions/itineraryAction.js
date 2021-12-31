@@ -3,7 +3,7 @@ const itineraryAction = {
     getAItinerary: (id)=>{
 
         return async(dispatch) => {
-            let respuesta  = await axios.get(`http://localhost:4000/api/itinerary/galery/${id}`)
+            let respuesta  = await axios.get(`https://mytinerary-techeira.herokuapp.com/api/itinerary/galery/${id}`)
             let info = respuesta.data.response
             dispatch({type:'GET_A_ITINERARY',payload:info})
         }   
@@ -14,7 +14,7 @@ const itineraryAction = {
     obtenerActividades: () => {
         return async (dispatch) => {
       
-            const response = await axios.get(`http://localhost:4000/api/activities`)
+            const response = await axios.get(`https://mytinerary-techeira.herokuapp.com/api/activities`)
             // console.log(response.data.response)
             dispatch({ type: 'GET_ALL_ACTIVIETIES', payload: response.data.response})
       
@@ -23,7 +23,7 @@ const itineraryAction = {
     likeItinerary: (id,idUser) =>{
         return async () => {
                 try{
-                    let response = await axios.put(`http://localhost:4000/api/itinerary/like/${id}`,{idUser})
+                    let response = await axios.put(`https://mytinerary-techeira.herokuapp.com/api/itinerary/like/${id}`,{idUser})
                 console.log(response.data.response)
                     return response.data.response
             

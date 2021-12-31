@@ -3,7 +3,7 @@ const citiesAction = {
     getCities: ()=>{
 
         return async(dispatch, getState) => {
-            let respuesta  = await axios.get('http://localhost:4000/api/galery')
+            let respuesta  = await axios.get('https://mytinerary-techeira.herokuapp.com/api/galery')
             let info = respuesta.data.response
             dispatch({type:'GET_ALL_CITIES',payload:info})
         }   
@@ -17,7 +17,7 @@ const citiesAction = {
     },
     getOneCity: (id)=>{
         return async(dispatch,getState)=>{
-            let respuesta = await axios.get(`http://localhost:4000/api/galery/${id}`)
+            let respuesta = await axios.get(`https://mytinerary-techeira.herokuapp.com/api/galery/${id}`)
             let city = respuesta.data.response
             dispatch({type:'GET_ONE_CITY',payload:city})
         }   

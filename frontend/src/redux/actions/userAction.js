@@ -6,7 +6,7 @@ const userAction = {
         return async (dispatch, getState) => {
             try {
                 
-                const user = await axios.post('http://localhost:4000/api/auth/signUp', { firstName, lastName, email, password, url, country, google })
+                const user = await axios.post('https://mytinerary-techeira.herokuapp.com/api/auth/signUp', { firstName, lastName, email, password, url, country, google })
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
                     dispatch({ type: 'USER', payload: user.data.response._doc })
@@ -22,7 +22,7 @@ const userAction = {
     iniciarSesion: (email, password) => {
         return async (dispatch, getState) => {
             try {
-                const user = await axios.post('http://localhost:4000/api/auth/signIn', { email, password })
+                const user = await axios.post('https://mytinerary-techeira.herokuapp.com/api/auth/signIn', { email, password })
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
                     dispatch({ type: 'USER', payload: user.data.response._doc })
@@ -44,7 +44,7 @@ const userAction = {
     signInLS: (token) => {
         return async (dispatch, getState) => {
             try {
-                let response = await axios.get('http://localhost:4000/api/verifyToken', {
+                let response = await axios.get('https://mytinerary-techeira.herokuapp.com/api/verifyToken', {
                     headers: {
                         Authorization: 'Bearer ' + token,
                     }
