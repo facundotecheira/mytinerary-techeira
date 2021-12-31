@@ -123,7 +123,7 @@ const SignUpIn = (props) => {
           </form>
           <div className="google">
             <GoogleLogin
-              clientId="1083246067612-q4fqup81pi8sq5cfaqiafm7t3qcsniv1.apps.googleusercontent.com"
+              clientId="1083246067612-ihnn9rs7ml95a00ci2id7t3c6ll84ec9.apps.googleusercontent.com"
               buttonText="Sign up with Google"
               onSuccess={responseGoogle}
               onFailure={responseGoogle}
@@ -146,7 +146,7 @@ const SignUpIn = (props) => {
           </form>
           <div className="google">
             <GoogleLogin
-              clientId="1083246067612-q4fqup81pi8sq5cfaqiafm7t3qcsniv1.apps.googleusercontent.com"
+              clientId="1083246067612-ihnn9rs7ml95a00ci2id7t3c6ll84ec9.apps.googleusercontent.com"
               buttonText="Sign in with Google"
               onSuccess={responseGoogles}
               onFailure={responseGoogles}
